@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&family=Poppins&display=swap');
+
+.nav-link {
+    color: #000850;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+    line-height: normal;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: 2px solid transparent;
+    margin-inline: 10px;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: #000850;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.2s ease-in-out;
+}
+
+.nav-link:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.logo {
+    width: 40px;
+    height: auto;
+    margin-inline: 5px;
+}
+
+.logoLetras {
+    width: 150px;
+    height: auto;
+    margin-inline: 5px;
+}
