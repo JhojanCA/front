@@ -14,15 +14,17 @@
                 <ul class="navbar-nav me-auto">
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-ship"></i>&ensp;Destinos</a>
+                        <a class="nav-link" routerLink="/booking"><i class="fa-solid fa-ship"></i>&ensp;Destinos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa-solid fa-city"></i>&ensp;Nosotros</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#"><button type="button" class="btn btn-outline-primary">Iniciar Sesión</button></a>
+                    <li *ngIf="!sesion" class="nav-item">
+                        <a href="#">
+                            <button type="button" (click)="iniciarSesion()" class="btn btn-outline-primary">Iniciar Sesión</button>
+                        </a>
                     </li>
-                    <li class="nav-item">
+                    <li *ngIf="sesion" class="nav-item">
                         <a class="nav-link" href="#"><i class="fa-solid fa-user"></i>&ensp;Jhojan</a>
                     </li>
                 </ul>

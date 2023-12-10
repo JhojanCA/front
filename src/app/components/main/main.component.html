@@ -1,0 +1,17 @@
+<ngb-carousel [interval]="5000">
+    <ng-template ngbSlide *ngFor="let item of images">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="carousel-text">
+                    <p>{{ item.text }}</p>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="picsum-img-wrapper">
+                    <div class="gradient-overlay"></div>
+                    <img class="carousel-img" src="{{ item.img }}" />
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</ngb-carousel>

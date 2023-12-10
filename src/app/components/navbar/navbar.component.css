@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&family=Poppins&display=swap');
 
 .container-fluid {
-    margin-inline: 30px;
+    margin-inline-start: 30px;
+    margin-inline-end: 10px;
 }
 
 .nav-link {
@@ -49,7 +50,7 @@
 }
 
 .logoLetras {
-    width: 150px;
+    width: 140px;
     height: auto;
     margin-inline: 5px;
 }

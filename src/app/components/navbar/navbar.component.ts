@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  sesion: boolean = false;
 
+  iniciarSesion() {
+    this.sesion = true;
+  }
 }
