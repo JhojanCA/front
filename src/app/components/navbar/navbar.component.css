@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&family=Poppins&display=swap');
 
+.container-fluid {
+    margin-inline: 30px;
+}
+
+.nav-link {
+    color: #000850;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
 .nav-link {
     color: #000850;
     font-family: 'Poppins', sans-serif;
@@ -42,4 +52,19 @@
     width: 150px;
     height: auto;
     margin-inline: 5px;
+}
+
+.btn-outline-primary {
+    color: #000850;
+    border-color: #000850;
+    border-width: 2px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    transition: all 0.3s ease-out;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background: #000850;
+    font-weight: bold;
 }
