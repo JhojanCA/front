@@ -11,16 +11,19 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto"></ul>
             <form class="d-flex">
-                <ul class="navbar-nav me-auto">
-                    
+                <ul class="navbar-nav me-auto">                    
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/booking"><i class="fa-solid fa-ship"></i>&ensp;Destinos</a>
+                        <a class="nav-link" routerLink="/booking">
+                            <i class="fa-solid fa-ship"></i>&ensp;Destinos
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-city"></i>&ensp;Nosotros</a>
+                        <a class="nav-link" href="#">
+                            <i class="fa-solid fa-city"></i>&ensp;Nosotros
+                        </a>
                     </li>
                     <li *ngIf="!sesion" class="nav-item">
-                        <a href="#">
+                        <a href="#" routerLink="/login">
                             <button type="button" (click)="iniciarSesion()" class="btn btn-outline-primary">Iniciar Sesión</button>
                         </a>
                     </li>
