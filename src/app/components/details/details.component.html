@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-7 left">
+        <ngb-carousel>
+            <ng-template ngbSlide *ngFor="let item of images">
+                <div class="picsum-img-wrapper">
+                    <img src="{{ item.img }}" class="carousel-img" />
+                </div>
+            </ng-template>
+        </ngb-carousel>
+    </div>
+    <div class="col-md-5 right">
+        <h1>Tour</h1>
+        <ngb-rating [(rate)]="selectedRate" [max]="5" [readonly]="false"></ngb-rating>
+        <h2>$ 30.000</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi eveniet incidunt amet quisquam? Saepe laborum
+            quae eligendi esse modi? Quis assumenda quo sapiente ut ea odit recusandae qui ipsam omnis!</p>
+        <button type="button" class="btn btn-primary btn-lg">Large button</button>
+    </div>
+
+</div>

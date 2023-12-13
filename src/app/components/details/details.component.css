@@ -1,0 +1,51 @@
+.left {
+    padding-block: 30px;
+    padding-inline: 50px;
+}
+
+.picsum-img-wrapper {
+    position: relative;
+    height: 60vh;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+.right {
+    display: flex;
+    flex-direction: column;
+    padding-block: 30px;
+    padding-inline-end: 50px;
+    font-family: "Poppins", sans-serif;
+}
+
+.right h1 {
+    font-family: "CynthoSlabW00-Bold", sans-serif;
+    color: #000850;
+}
+
+.right h2 {
+    font-weight: bold;
+    color: rgb(9, 0, 58);
+    padding-block: 20px;
+}
+
+.right p {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #000;
+}
+
+.right button {
+    width: 90%;
+    background: #000850;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    align-self: center;
+}
