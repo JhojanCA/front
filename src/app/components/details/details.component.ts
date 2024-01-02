@@ -7,7 +7,7 @@ import { NgbCarouselModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent {
-  selectedRate: number = 5;
+  rate = 4.8;
   images: any[] = [
     { img: 'assets/slider3.jpg' },
     { img: 'assets/slider2.jpg' },

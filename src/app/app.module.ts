@@ -9,6 +9,7 @@ import { BookingComponent } from './components/booking/booking.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DetailsComponent } from './components/details/details.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DetailsComponent } from './components/details/details.component';
     MainComponent,
     BookingComponent,
     NavbarComponent,
-    DetailsComponent
+    DetailsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
