@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&family=Poppins&display=swap');
+
+.login-container {
+    width: 30vw;
+    height: 60vh;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #000850;
+    border-radius: 30px;
+    border-right: 5px solid #CBCBCB;
+    background: linear-gradient(178.63deg, rgba(217, 217, 217, 0.3) -11.25%, rgba(217, 217, 217, 0.1) 36.74%, rgba(12, 12, 12, 0.05) 111.6%);
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
+    transition: all 0.8s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-container .form-floating {
+    width: 80%;
+}
+
+.login-container .form-control {
+    background-color: transparent;
+    border-radius: 10px 10px 0 0;
+    border: none;
+    border-bottom: 1px solid #000850;
+}
+
+.login-container .form-control:focus {
+    box-shadow: none;
+}
+
+.login-container .form-control:focus-within~label {
+    color: #000850;
+    font-weight: bold;
+}
+
+.login-container .btn-primary {
+    width: 80%;
+    height: 45px;
+    background: #000850;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    align-self: center;
+}
+
+.login-container .btn-outline-primary {
+    width: 80%;
+    height: 45px;
+    color: #000850;
+    border-color: #000850;
+    border-radius: 50px;
+}
+
+.login-container .btn-outline-primary:hover {
+    background: none;
+}
