@@ -5,11 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
-import { BookingComponent } from './components/booking/booking.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { BookingComponent } from './components/user/booking/booking.component';
+import { NavbarComponent } from './components/user/navbar/navbar.component';
+import { DetailsComponent } from './components/user/details/details.component';
+import { FooterComponent } from './components/user/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DetailsComponent } from './components/details/details.component';
-import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
