@@ -46,6 +46,7 @@
     border: none;
     border-radius: 50px;
     align-self: center;
+    font-weight: bold;
 }
 
 .login-container .btn-outline-primary {
@@ -54,6 +55,7 @@
     color: #000850;
     border-color: #000850;
     border-radius: 50px;
+    font-weight: bold;
 }
 
 .login-container .btn-outline-primary:hover {

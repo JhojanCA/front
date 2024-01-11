@@ -10,6 +10,10 @@ import { NavbarComponent } from './components/user/navbar/navbar.component';
 import { DetailsComponent } from './components/user/details/details.component';
 import { FooterComponent } from './components/user/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavbarAdminComponent } from './components/admin/navbar-admin/navbar-admin.component';
+import { MainAdminComponent } from './components/admin/main-admin/main-admin.component';
+import { TourManagementComponent } from './components/admin/tour-management/tour-management.component';
+import { BookingManagementComponent } from './components/admin/booking-management/booking-management.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BookingComponent,
     NavbarComponent,
     DetailsComponent,
-    FooterComponent
+    FooterComponent,
+    NavbarAdminComponent,
+    MainAdminComponent,
+    TourManagementComponent,
+    BookingManagementComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,9 @@ import { BookingComponent } from './components/user/booking/booking.component';
 import { DetailsComponent } from './components/user/details/details.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
+import { MainAdminComponent } from './components/admin/main-admin/main-admin.component';
+import { BookingManagementComponent } from './components/admin/booking-management/booking-management.component';
+import { TourManagementComponent } from './components/admin/tour-management/tour-management.component';
 
 const routes: Routes = [
   {
@@ -21,6 +24,18 @@ const routes: Routes = [
   {
     path: 'details',
     component: DetailsComponent
+  },
+  {
+    path: 'main',
+    component: MainAdminComponent
+  },
+  {
+    path: 'booking_management',
+    component: BookingManagementComponent
+  },
+  {
+    path: 'tour_management',
+    component: TourManagementComponent
   },
   {
     path: '**',
