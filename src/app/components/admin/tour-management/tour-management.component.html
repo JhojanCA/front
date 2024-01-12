@@ -1,17 +1,62 @@
 
 <h2>SELECCIONE EL TOUR</h2>
 <div class="container">
-    <div class="card" routerLink="/details">
+    <div class="card">
         <img src="assets/slider1.jpg" />
         <h3>Tour Atardecer</h3>
         <p>Río Sinú</p>
         <div class="overlay">
-            <button type="button" class="btn btn-info m-1" placement="top" ngbTooltip="Modificar">
+            <button type="button" class="btn btn-info m-1" (click)="openModal(contentMod)" placement="top" ngbTooltip="Modificar">
                 <i class="fa-solid fa-pen"></i>
             </button>
-            <button type="button" class="btn btn-danger m-1" placement="top" ngbTooltip="Eliminar">
+            <button type="button" class="btn btn-danger m-1" (click)="delete()" placement="top" ngbTooltip="Eliminar">
                 <i class="fa-solid fa-trash"></i>
             </button>
         </div>
     </div>
 </div>
+
+<ng-template #contentMod let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modificar Tour</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <div class="col-6 p-2">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="Nombre" placeholder="Nombre" autocomplete="off">
+            </div>
+            <div class="col-6 p-2">
+                <label class="form-label">Precio</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-6 p-2">
+                <label class="form-label">Categoría</label>
+                <select class="form-select" id="select">
+                    <option>Seleccione...</option>
+                    <option>1</option>
+                </select>
+            </div>
+            <div class="col-6 p-2">
+                <label class="form-label">Imágenes</label>
+                <input class="form-control" type="file" id="formFile" multiple accept="image/*">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-12 p-2">
+                <label class="form-label">Descripción</label>
+                <textarea class="form-control" id="Descripcion" rows="5"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="modal.close('Close click')">Cerrar</button>
+    </div>
+</ng-template>

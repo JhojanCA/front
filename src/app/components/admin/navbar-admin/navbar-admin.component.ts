@@ -1,4 +1,4 @@
-import { Component, inject, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { Component, inject, TemplateRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

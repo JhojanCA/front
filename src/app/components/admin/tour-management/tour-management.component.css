@@ -83,6 +83,37 @@ h2 {
     width: 80px;
     height: 80px;
     color: #fff;
-    font-size: 26px;
+    font-size: 28px;
+    border: 2px solid #fff;
     border-radius: 50%;
+}
+
+.btn-info {
+    background: #000850;
+}
+
+.btn-danger {
+    background: #b60000;
+}
+
+/*------------------------------------ MODAL ------------------------------------*/
+.modal-header,
+.modal-body,
+.modal-footer {
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.modal-title,
+.form-label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background: #000850;
 }
