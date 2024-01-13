@@ -1,0 +1,48 @@
+h2 {
+    font-family: "CynthoSlabW00-Bold", sans-serif;
+    text-align: center;
+    color: #000850;
+    margin-block: 30px;
+}
+
+.container {
+    width: 50vw;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container button {
+    width: 30%;
+    height: 45px;
+    background: #000850;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.form-group {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.form-label,
+.col-form-label {
+    font-weight: bold;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.radio-group input,
+.radio-group label {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    width: 33%;
+}

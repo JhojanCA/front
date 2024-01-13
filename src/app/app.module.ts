@@ -14,6 +14,7 @@ import { NavbarAdminComponent } from './components/admin/navbar-admin/navbar-adm
 import { MainAdminComponent } from './components/admin/main-admin/main-admin.component';
 import { TourManagementComponent } from './components/admin/tour-management/tour-management.component';
 import { BookingManagementComponent } from './components/admin/booking-management/booking-management.component';
+import { TourReservationComponent } from './components/user/tour-reservation/tour-reservation.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BookingManagementComponent } from './components/admin/booking-managemen
     NavbarAdminComponent,
     MainAdminComponent,
     TourManagementComponent,
-    BookingManagementComponent
+    BookingManagementComponent,
+    TourReservationComponent
   ],
   imports: [
     BrowserModule,
