@@ -1,17 +1,19 @@
-<div class="row">
+<app-navbar></app-navbar>
+
+<div class="row" *ngFor="let item of tour">
     <div class="col-md-7 left">
         <ngb-carousel>
-            <ng-template ngbSlide *ngFor="let item of images">
+            <ng-template ngbSlide *ngFor="let img of images">
                 <div class="picsum-img-wrapper">
-                    <img src="{{ item.img }}" class="carousel-img" />
+                    <img src="{{ img.img }}" class="carousel-img" />
                 </div>
             </ng-template>
         </ngb-carousel>
     </div>
     <div class="col-md-5 right">
-        <h1>Tour</h1>
+        <h1>{{ item.nombre }}</h1>
         <div class="d-flex flex-row m-0">
-            <ngb-rating [(rate)]="rate" [max]="5" [readonly]="true" class="me-1">
+            <ngb-rating [(rate)]="item.calificacion" [max]="5" [readonly]="true" class="me-1">
                 <ng-template let-fill="fill" let-index="index">
                     <i class="{{ fill >= 90 ? 'fa-solid fa-star' : 
                                 (fill >= 40 && fill < 90 ? 'fa-solid fa-star-half-stroke' : 
@@ -20,12 +22,11 @@
                 </ng-template>
             </ngb-rating>
             <h6>
-                <strong>{{ rate.toFixed(1) }}</strong>
+                <strong>{{ item.calificacion.toFixed(1) }}</strong>
             </h6>
         </div>
-        <h2>$ 30.000</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi eveniet incidunt amet quisquam? Saepe laborum
-            quae eligendi esse modi? Quis assumenda quo sapiente ut ea odit recusandae qui ipsam omnis!</p>
+        <h2>$ {{ item.precio }}</h2>
+        <p>{{ item.descripcion }}</p>
         <button type="button" class="btn btn-primary btn-lg mt-2" routerLink="/tour_reservation">RESERVAR</button>
     </div>
 </div>
@@ -46,3 +47,5 @@
         </div>
     </div>
 </div>
+
+<app-footer></app-footer>

@@ -27,6 +27,10 @@ const routes: Routes = [
     component: DetailsComponent
   },
   {
+    path: 'details/:id',
+    component: DetailsComponent
+  },
+  {
     path: 'tour_reservation',
     component: TourReservationComponent
   },

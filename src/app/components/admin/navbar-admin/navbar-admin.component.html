@@ -12,21 +12,11 @@
             <ul class="navbar-nav me-auto"></ul>
             <form class="d-flex">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
+                    <li class="nav-item" *ngIf="esTourMan">
                         <a class="nav-link" (click)="openModal(content)">
                             <i class="fa-solid fa-circle-plus"></i>&ensp;Agregar
                         </a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fa-solid fa-floppy-disk"></i>&ensp;Guardar
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fa-solid fa-trash"></i>&ensp;Eliminar
-                        </a>
-                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" routerLink="/login">
                             <i class="fa-solid fa-user"></i>&ensp;Jhojan

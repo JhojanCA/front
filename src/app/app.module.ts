@@ -15,6 +15,9 @@ import { MainAdminComponent } from './components/admin/main-admin/main-admin.com
 import { TourManagementComponent } from './components/admin/tour-management/tour-management.component';
 import { BookingManagementComponent } from './components/admin/booking-management/booking-management.component';
 import { TourReservationComponent } from './components/user/tour-reservation/tour-reservation.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component'
 
 @NgModule({
   declarations: [
@@ -29,12 +32,15 @@ import { TourReservationComponent } from './components/user/tour-reservation/tou
     MainAdminComponent,
     TourManagementComponent,
     BookingManagementComponent,
-    TourReservationComponent
+    TourReservationComponent,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
