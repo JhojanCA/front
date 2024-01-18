@@ -4,7 +4,7 @@
 <h2>TOURS POR EL RÍO SINÚ</h2>
 <div class="container">
     <div *ngFor="let item of listTours" routerLink="/details/{{ item.id }}" class="card">
-        <img src="assets/slider1.jpg" />
+        <img [src]="'http://localhost:3000/' + item.image" />
         <div class="nombre">
             <h3>{{ item.nombre }}</h3>
         </div>

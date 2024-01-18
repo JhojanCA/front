@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NgbCarouselModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tour } from 'src/app/interfaces/tour';
 import { TourService } from 'src/app/services/tour.service';
@@ -11,20 +10,14 @@ import { TourService } from 'src/app/services/tour.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent {
-  rate = 4.8;
   loading: boolean = false;
   id: number;
   tour: Tour[] = [];
-  images: any[] = [
-    { img: 'assets/slider3.jpg' },
-    { img: 'assets/slider2.jpg' },
-    { img: 'assets/slider1.jpg' },
-  ];
+  listTours: Tour[] = [];
 
   constructor(private ngbCarousel: NgbCarouselModule,
               private ngbRating: NgbRatingModule,
               private _tourService: TourService,
-              private fb: FormBuilder, 
               private router: Router,
               private aRoute: ActivatedRoute) {
     
@@ -35,6 +28,8 @@ export class DetailsComponent {
     if (this.id != 0) {
       this.getTour(this.id);
     }
+
+    this.getListTours();
   }
 
   getTour(id: number) {
@@ -42,6 +37,14 @@ export class DetailsComponent {
     this._tourService.getTour(id).subscribe((data: Tour[]) => {
       this.loading = false;
       this.tour = data;
+    })
+  }
+
+  getListTours() {
+    this.loading = true;
+    this._tourService.getListTours().subscribe((data: Tour[]) => {
+      this.listTours = data;
+      this.loading = false;
     })
   }
 }

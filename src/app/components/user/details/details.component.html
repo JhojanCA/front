@@ -1,19 +1,20 @@
 <app-navbar></app-navbar>
+<app-progress-bar *ngIf="loading"></app-progress-bar>
 
-<div class="row" *ngFor="let item of tour">
+<div class="row" *ngIf="tour">
     <div class="col-md-7 left">
         <ngb-carousel>
-            <ng-template ngbSlide *ngFor="let img of images">
+            <ng-template ngbSlide *ngFor="let img of tour">
                 <div class="picsum-img-wrapper">
-                    <img src="{{ img.img }}" class="carousel-img" />
+                    <img [src]="'http://localhost:3000/' + img.image" class="carousel-img" />
                 </div>
             </ng-template>
         </ngb-carousel>
     </div>
     <div class="col-md-5 right">
-        <h1>{{ item.nombre }}</h1>
+        <h1>{{ tour[0].nombre }}</h1>
         <div class="d-flex flex-row m-0">
-            <ngb-rating [(rate)]="item.calificacion" [max]="5" [readonly]="true" class="me-1">
+            <ngb-rating [(rate)]="tour[0].calificacion" [max]="5" [readonly]="true" class="me-1">
                 <ng-template let-fill="fill" let-index="index">
                     <i class="{{ fill >= 90 ? 'fa-solid fa-star' : 
                                 (fill >= 40 && fill < 90 ? 'fa-solid fa-star-half-stroke' : 
@@ -22,27 +23,26 @@
                 </ng-template>
             </ngb-rating>
             <h6>
-                <strong>{{ item.calificacion.toFixed(1) }}</strong>
+                <strong>{{ tour[0].calificacion.toFixed(1) }}</strong>
             </h6>
         </div>
-        <h2>$ {{ item.precio }}</h2>
-        <p>{{ item.descripcion }}</p>
-        <button type="button" class="btn btn-primary btn-lg mt-2" routerLink="/tour_reservation">RESERVAR</button>
+        <h2>{{ tour[0].precio | currency:'$ ':'symbol':'3.0' }}</h2>
+        <p>{{ tour[0].descripcion }}</p>
+        <button type="button" class="btn btn-primary btn-lg mt-2" routerLink="/tour_reservation">Reservar</button>
     </div>
 </div>
 
 <div class="row options">
     <h2>MÁS OPCIONES DISPONIBLES</h2>
     <div class="container">
-        <div class="card" routerLink="/details">
-            <img src="assets/slider1.jpg" />
-            <h3>Tour Atardecer</h3>
-            <p>Río Sinú</p>
+        <div *ngFor="let item of listTours" routerLink="/details/{{ item.id }}" class="card">
+            <img [src]="'http://localhost:3000/' + item.image" />
+            <div class="nombre">
+                <h3>{{ item.nombre }}</h3>
+            </div>
             <div class="overlay">
-                <h1>AAA</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate maiores, non in dolore eos quisquam
-                    quibusdam illum nulla itaque veniam est laboriosam necessitatibus totam vitae ab quas autem placeat?
-                    Eligendi?</p>
+                <h2>{{ item.nombre }}</h2>
+                <p>{{ item.descripcion }}</p>
             </div>
         </div>
     </div>

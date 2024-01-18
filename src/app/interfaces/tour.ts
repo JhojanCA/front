@@ -4,5 +4,6 @@ export interface Tour {
     nombre: string;
     descripcion: string;
     precio: number;
-    calificacion: number
+    calificacion: number,
+    image: string
 }

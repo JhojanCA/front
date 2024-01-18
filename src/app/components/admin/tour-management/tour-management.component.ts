@@ -10,10 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class TourManagementComponent {
   private modal = inject(NgbModal);
-  listTours: Tour[] = [
-    { categoria: "Rio", nombre: "Tour1", descripcion: 'AAA', precio: 0, calificacion: 0 },
-    { categoria: "Ciudad", nombre: "Tour2", descripcion: 'BBB', precio: 0, calificacion: 0 },
-  ]
+  listTours: Tour[] = [];
   
   openModal(content: TemplateRef<any>) {
     this.modal.open(content, { windowClass: 'dark-modal', size: 'lg' });
