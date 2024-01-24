@@ -25,4 +25,12 @@ export class TourService {
   getTour(id: number): Observable<Tour[]> {
     return this.http.get<Tour[]>(`${this.url}${id}`);
   }
+
+  saveTour(tour: Tour): Observable<void> {
+    return this.http.post<void>(`${this.url}`, tour);
+  }
+
+  getCategorias(): Observable<Tour[]> {
+    return this.http.get<Tour[]>(`${this.url}`);
+  }
 }
