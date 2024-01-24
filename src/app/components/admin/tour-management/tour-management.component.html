@@ -19,10 +19,10 @@
 <ng-template #contentMod let-modal>
     <div class="modal-header">
         <h4 class="modal-title">Modificar Tour</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
     </div>
     
-    <form [formGroup]="form">
+    <form [formGroup]="formMod">
         <div class="modal-body">
             <div class="form-group">
                 <div class="col-6 p-2">
@@ -41,14 +41,16 @@
                 <div class="col-6 p-2">
                     <label class="form-label">Categoría</label>
                     <select formControlName="id_categoria" class="form-select">
-                        <option>Seleccione...</option>
-                        <option>1</option>
+                        <option value="">Seleccione...</option>
+                        <option *ngFor="let item of listCategorias" value="{{ item.id }}">
+                            {{ item.categoria }}
+                        </option>
                     </select>
                 </div>
-                <!-- <div class="col-6 p-2">
+                <div class="col-6 p-2">
                     <label class="form-label">Imágenes</label>
-                    <input formControlName="image" class="form-control" type="file" multiple accept="image/*">
-                </div> -->
+                    <input class="form-control" type="file" multiple accept="image/*">
+                </div>
             </div>
             <div class="form-group">
                 <div class="col-12 p-2">
@@ -59,7 +61,7 @@
         </div>
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Guardar</button>
-            <button type="button" class="btn btn-outline-secondary" (click)="modal.close('Close click')">Cerrar</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="modal.close()">Cerrar</button>
         </div>
     </form>
 </ng-template>
