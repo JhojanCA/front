@@ -13,6 +13,7 @@ export class DetailsComponent {
   loading: boolean = false;
   id: number;
   tour: Tour[] = [];
+  images: Tour[] = [];
   listTours: Tour[] = [];
 
   constructor(private ngbCarousel: NgbCarouselModule,
@@ -25,9 +26,12 @@ export class DetailsComponent {
   }
 
   ngOnInit(): void {
-    if (this.id != 0) {
-      this.getTour(this.id);
-    }
+    this.aRoute.paramMap.subscribe(params => {
+      this.id = Number(params.get('id'));
+      if (this.id !== 0) {
+        this.getTour(this.id);
+      }
+    });
 
     this.getListTours();
   }
@@ -35,8 +39,16 @@ export class DetailsComponent {
   getTour(id: number) {
     this.loading = true;
     this._tourService.getTour(id).subscribe((data: Tour[]) => {
-      this.loading = false;
       this.tour = data;
+      this.getImagenes(id);
+      this.loading = false;
+    })
+  }
+  
+  getImagenes(id: number) {
+    this._tourService.getImagenes(id).subscribe((data: Tour[]) => {
+      this.images = data;
+      console.log(data);
     })
   }
 
@@ -46,5 +58,12 @@ export class DetailsComponent {
       this.listTours = data;
       this.loading = false;
     })
+  }
+
+  scrollTo(elementId: string): void {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }

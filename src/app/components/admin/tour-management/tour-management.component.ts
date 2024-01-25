@@ -42,7 +42,6 @@ export class TourManagementComponent {
   }
 
   getTour(id: number) {
-    this.loading = true;
     this._tourService.getTour(id).subscribe((data: Tour[]) => {
       this.formMod.setValue({
         id_categoria: data[0].id_categoria,
@@ -50,8 +49,6 @@ export class TourManagementComponent {
         descripcion: data[0].descripcion,
         precio: data[0].precio,
       });
-      // console.log(data[0]);
-      this.loading = false;
     })    
   }
 
@@ -60,15 +57,8 @@ export class TourManagementComponent {
       this.listCategorias = data;
     })
   }
-  
-  openModal(content: TemplateRef<any>, id: number) {
-    this.modal.open(content, { windowClass: 'dark-modal', size: 'lg' });
-    this.getCategorias();
-    this.getTour(id);
-    // console.log(id);
-  }
 
-  delete() {
+  deleteTour(id: number) {
     Swal.fire({
       title: "¿Estás seguro?",
       text: "El registro será eliminado!",
@@ -80,16 +70,27 @@ export class TourManagementComponent {
       cancelButtonText: "NO"
     }).then((result) => {
       if (result.isConfirmed) {
+
+        this.loading = true;
+        this._tourService.deleteTour(id).subscribe(() => {
+          this.getListTours();
+          this.loading = false;
+        });
+
         Swal.fire({
           title: "Eliminado",
           text: "El registro fue eliminado con éxito",
           icon: "success",
           confirmButtonColor: "#000850",
         });
-      } else {
-        
       }
     });    
+  }
+
+  openModal(content: TemplateRef<any>, id: number) {
+    this.modal.open(content, { windowClass: 'dark-modal', size: 'lg' });
+    this.getCategorias();
+    this.getTour(id);
   }
 
 }

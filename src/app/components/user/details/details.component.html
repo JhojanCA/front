@@ -1,10 +1,10 @@
 <app-navbar></app-navbar>
 <app-progress-bar *ngIf="loading"></app-progress-bar>
 
-<div class="row" *ngIf="tour">
+<div id="infotour" class="row" *ngIf="tour">
     <div class="col-md-7 left">
         <ngb-carousel>
-            <ng-template ngbSlide *ngFor="let img of tour">
+            <ng-template ngbSlide *ngFor="let img of images">
                 <div class="picsum-img-wrapper">
                     <img [src]="'http://localhost:3000/' + img.image" class="carousel-img" />
                 </div>
@@ -35,7 +35,7 @@
 <div class="row options">
     <h2>MÁS OPCIONES DISPONIBLES</h2>
     <div class="container">
-        <div *ngFor="let item of listTours" routerLink="/details/{{ item.id }}" class="card">
+        <div *ngFor="let item of listTours" routerLink="/details/{{ item.id }}" (click)="scrollTo('infotour')" class="card">
             <img [src]="'http://localhost:3000/' + item.image" />
             <div class="nombre">
                 <h5>{{ item.nombre }}</h5>
@@ -48,5 +48,6 @@
         </div>
     </div>
 </div>
+
 
 <app-footer></app-footer>
