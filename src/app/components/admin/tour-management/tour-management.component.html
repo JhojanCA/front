@@ -10,8 +10,9 @@
             <h3>{{ tour.precio | currency:'$':'symbol':'1.0' }}</h3>
         </div>
         <div class="overlay">
-            <i class="fa-solid fa-pen" placement="top" ngbTooltip="Modificar" (click)="openModal(contentMod, tour.id!)"></i>
+            <i class="fa-solid fa-pen" placement="top" ngbTooltip="Modificar" (click)="openModal(contentMod, 'lg', tour.id!)"></i>
             <i class="fa-solid fa-trash" placement="top" ngbTooltip="Eliminar" (click)="deleteTour(tour.id!)"></i>
+            <i class="fa-solid fa-image" placement="top" ngbTooltip="Imágenes" (click)="openModal(contentImg, 'xl', tour.id!)"></i>
         </div>
     </div>
 </div>
@@ -25,18 +26,20 @@
     <form [formGroup]="formMod">
         <div class="modal-body">
             <div class="form-group">
-                <div class="col-4 p-2">
+                <div class="col-12 p-2">
                     <label class="form-label">Nombre</label>
                     <input formControlName="nombre" type="text" class="form-control">
                 </div>
-                <div class="col-4 p-2">
+            </div>
+            <div class="form-group">
+                <div class="col-6 p-2">
                     <label class="form-label">Precio</label>
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input formControlName="precio" type="number" class="form-control">
                     </div>
                 </div>
-                <div class="col-4 p-2">
+                <div class="col-6 p-2">
                     <label class="form-label">Categoría</label>
                     <select formControlName="id_categoria" class="form-select">
                         <option value="">Seleccione...</option>
@@ -49,14 +52,7 @@
             <div class="form-group">
                 <div class="col-12 p-2">
                     <label class="form-label">Descripción</label>
-                    <textarea formControlName="descripcion" class="form-control" rows="5"></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-12 p-2">
-                    <label class="form-label">Imágenes</label>
-                    <input class="form-control" type="file" multiple accept="image/*" (change)="onPhotoSelected($event)">
-                    <img *ngFor="let url of urls" [src]="url" class="preview-img">
+                    <textarea formControlName="descripcion" class="form-control" rows="8"></textarea>
                 </div>
             </div>
         </div>
@@ -65,4 +61,40 @@
             <button type="button" class="btn btn-outline-secondary" (click)="modal.close()">Cerrar</button>
         </div>
     </form>
+</ng-template>
+
+<ng-template #contentImg let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Imagenes Tour</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+    <!-- <form (ngSubmit)="addImages()"> -->
+        <div class="modal-body">
+            <div class="form-group row ps-2 pe-2">
+                <label class="form-label">Imágenes</label>
+                <div *ngFor="let img of images" class="preview col-3">
+                    <img [src]="'http://localhost:3000/' + img.image" class="preview-img">
+                    <div class="preview-overlay">
+                        <i class="fa-solid fa-trash" (click)="deleteImagen(img.id!, id_tour)"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-12 p-2">
+                    <label class="form-label">Agregar imágenes</label>
+                    <input class="form-control" type="file" multiple accept="image/*"
+                        (change)="onPhotoSelected($event)">
+                </div>
+            </div>
+            <div class="form-group row ps-2 pe-2">
+                <div *ngFor="let url of urls" class="preview col-3">
+                    <img [src]="url" class="preview-img">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="addImages()">Guardar</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="modal.close()">Cerrar</button>
+        </div>
+    <!-- </form> -->
 </ng-template>

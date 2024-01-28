@@ -15,9 +15,11 @@ export class TourManagementComponent {
   formMod: FormGroup;
   listTours: Tour[] = [];
   listCategorias: Tour[] = [];
-  images: File[] = [];
+  images: Tour[] = [];
+  file: File[] = [];
   urls: (string | ArrayBuffer)[] = [];
   loading: boolean = false;
+  id_tour: number = 0; 
 
   constructor(private _tourService: TourService,
               private fb: FormBuilder) {
@@ -30,6 +32,7 @@ export class TourManagementComponent {
     });
   }
 
+
   ngOnInit(): void {
     this.getListTours();
 
@@ -38,18 +41,24 @@ export class TourManagementComponent {
     });
   }
 
+
   onPhotoSelected(event: any) {
     if (event.target.files && event.target.files.length > 0) {
-      this.images = event.target.files;
-      for (let i = 0; i < this.images.length; i++) {
+      this.file = event.target.files;
+      for (let i = 0; i < this.file.length; i++) {
         const reader = new FileReader();
         reader.onload = () => {
           this.urls.push(reader.result!);
         };
-        reader.readAsDataURL(this.images[i]);
+        reader.readAsDataURL(this.file[i]);
       }
+      this.urls = [];
+    }
+    else {
+      this.urls = [];
     }
   }
+
 
   getListTours() {
     this.loading = true;
@@ -59,6 +68,7 @@ export class TourManagementComponent {
     })
   }
 
+
   getTour(id: number) {
     this._tourService.getTour(id).subscribe((data: Tour[]) => {
       this.formMod.setValue({
@@ -67,20 +77,11 @@ export class TourManagementComponent {
         descripcion: data[0].descripcion,
         precio: data[0].precio,
       });
+      this.getImagenes(id);
+      this.id_tour = id;
     })    
   }
 
-  getImagenes(id: number) {
-    this._tourService.getImagenes(id).subscribe((data: Tour[]) => {
-      this.images
-    })
-  }
-
-  getCategorias() {
-    this._tourService.getCategorias().subscribe((data: Tour[]) => {
-      this.listCategorias = data;
-    })
-  }
 
   deleteTour(id: number) {
     Swal.fire({
@@ -111,10 +112,74 @@ export class TourManagementComponent {
     });    
   }
 
-  openModal(content: TemplateRef<any>, id: number) {
-    this.modal.open(content, { windowClass: 'dark-modal', size: 'lg' });
+
+  getImagenes(id_tour: number) {
+    this._tourService.getImagenes(id_tour).subscribe((data: Tour[]) => {
+      this.images = data;
+    });
+  }
+
+
+  addImages() {
+    this.loading = true
+    this._tourService.saveImagen(this.id_tour, this.file).subscribe(() => {
+      
+      Swal.fire({
+        title: "GUARDADO CON ÉXITO!",
+        icon: "success"
+      }); 
+      
+      this.urls = [];
+      this.closeModal();
+      this.loading = false;
+    });
+  }
+
+
+  deleteImagen(id: number, id_tour: number) {
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "La imagen será eliminadoa!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#b60000",
+      cancelButtonColor: "#000850",
+      confirmButtonText: "SI, ESTOY SEGURO",
+      cancelButtonText: "NO"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        // this.loading = true;
+        this._tourService.deleteImagen(id).subscribe(() => {
+          this.getImagenes(id_tour);
+          // this.loading = false;
+        });
+
+        Swal.fire({
+          title: "Eliminada",
+          text: "La imagen fue eliminada con éxito",
+          icon: "success",
+          confirmButtonColor: "#000850",
+        });
+      }
+    });    
+  }
+
+
+  getCategorias() {
+    this._tourService.getCategorias().subscribe((data: Tour[]) => {
+      this.listCategorias = data;
+    })
+  }
+
+
+  openModal(content: TemplateRef<any>, size: string, id: number) {
+    this.modal.open(content, { windowClass: 'dark-modal', size });
     this.getCategorias();
     this.getTour(id);
   }
 
+  closeModal() {
+    this.modal.dismissAll();
+  }
 }
