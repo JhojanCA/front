@@ -59,6 +59,19 @@ export class TourManagementComponent {
     }
   }
 
+  updatePhotoSelected(event: any, id: number) {
+    if (event.target.files && event.target.files.length > 0) {
+      this.file = event.target.files;
+      this._tourService.putImagen(id, this.file).subscribe(() => {
+        Swal.fire({
+          title: "ACTUALIZADO CON ÉXITO!",
+          icon: "success"
+        });
+        this.getImagenes(this.id_tour);
+      });
+    }
+  }
+
 
   getListTours() {
     this.loading = true;
@@ -113,6 +126,30 @@ export class TourManagementComponent {
   }
 
 
+  putTour(){
+    const tour: Tour = {
+      id_categoria: this.formMod.value.id_categoria,
+      categoria: '',
+      nombre: this.formMod.value.nombre,
+      descripcion: this.formMod.value.descripcion,
+      precio: this.formMod.value.precio,
+      calificacion: 0,
+      image: ''
+    }
+
+    this.loading = true;
+    this._tourService.putTour(this.id_tour, tour).subscribe(() => {
+      Swal.fire({
+          title: "ACTUALIZADO CON ÉXITO!",
+          icon: "success"
+        }); 
+      this.loading = false;
+      this.getListTours();
+      this.closeModal();
+    })
+  }
+
+
   getImagenes(id_tour: number) {
     this._tourService.getImagenes(id_tour).subscribe((data: Tour[]) => {
       this.images = data;
@@ -130,7 +167,6 @@ export class TourManagementComponent {
       }); 
       
       this.urls = [];
-      this.closeModal();
       this.loading = false;
     });
   }
@@ -139,7 +175,7 @@ export class TourManagementComponent {
   deleteImagen(id: number, id_tour: number) {
     Swal.fire({
       title: "¿Estás seguro?",
-      text: "La imagen será eliminadoa!",
+      text: "La imagen será eliminada!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#b60000",
@@ -149,10 +185,10 @@ export class TourManagementComponent {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        // this.loading = true;
+        this.loading = true;
         this._tourService.deleteImagen(id).subscribe(() => {
           this.getImagenes(id_tour);
-          // this.loading = false;
+          this.loading = false;
         });
 
         Swal.fire({
@@ -178,6 +214,7 @@ export class TourManagementComponent {
     this.getCategorias();
     this.getTour(id);
   }
+  
 
   closeModal() {
     this.modal.dismissAll();

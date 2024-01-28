@@ -136,6 +136,7 @@ h2 {
     color: white;
     font-size: 3rem;
     cursor: pointer;
+    margin-inline: 0.6rem;
 }
 
 .modal-title,

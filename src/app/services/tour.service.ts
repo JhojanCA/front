@@ -36,6 +36,10 @@ export class TourService {
     return this.http.delete<void>(`${this.url}${id}`);
   } 
 
+  putTour(id: number, tour: Tour): Observable<void> {
+    return this.http.put<void>(`${this.url}${id}`, tour);
+  }
+
   getImagenes(id: number): Observable<Tour[]> {
     return this.http.get<Tour[]>(`${this.url}imgs/${id}`);
   } 
@@ -51,6 +55,15 @@ export class TourService {
 
   deleteImagen(id: number): Observable<void> {
     return this.http.delete<void>(`${this.url}imgs/${id}`)
+  }
+
+  putImagen(id: number, photos: File[]): Observable<void> {
+    const form = new FormData();
+    form.append('id', `${ id }`);
+    for (let i = 0; i < photos.length; i++) {
+      form.append('image', photos[i]);
+    }
+    return this.http.put<void>(`${this.url}imgs/${id}`, form);
   }
 
   getCategorias(): Observable<Tour[]> {
