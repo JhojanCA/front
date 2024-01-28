@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../environment/environment';
 import { Photo } from '../interfaces/photo';
@@ -9,6 +9,7 @@ import { Tour } from '../interfaces/tour';
   providedIn: 'root'
 })
 export class TourService {
+  @Output() tourAdded: EventEmitter<void> = new EventEmitter();
   private appUrl: string;
   private apiUrl: string;
   private url: string;
@@ -50,6 +51,10 @@ export class TourService {
       form.append('image', photos[i]);
     }
     return this.http.post<void>(`${this.url}imgs`, form);
+  }
+
+  deleteImagen(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.url}imgs/${id}`)
   }
 
   getCategorias(): Observable<Tour[]> {

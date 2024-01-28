@@ -1,4 +1,4 @@
-import { Component, inject, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, inject, Output, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router, NavigationEnd } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -20,10 +20,12 @@ interface HtmlInputEvent extends Event {
 export class NavbarAdminComponent {
   private modal = inject(NgbModal);
   esTourMan: boolean = false;
-  form: FormGroup;
-  listCategorias: Tour[] = [];
-  images: File[] = [];
+  loading: boolean = false;
   id: number = 0;
+  form: FormGroup;
+  images: File[] = [];
+  listCategorias: Tour[] = [];
+  urls: (string | ArrayBuffer)[] = [];
   
 
   constructor(private router: Router,
@@ -34,8 +36,7 @@ export class NavbarAdminComponent {
       id_categoria: [''],
       nombre: [''],
       descripcion: [''],
-      precio: [null],
-      image: [null],
+      precio: [''],
     });
     
     this.router.events.subscribe((event) => {
@@ -50,16 +51,29 @@ export class NavbarAdminComponent {
 
   }
 
+
   onPhotoSelected(event: any) {
-    this.images = event.target.files;
+    if (event.target.files && event.target.files.length > 0) {
+      this.images = event.target.files;
+      for (let i = 0; i < this.images.length; i++) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.urls.push(reader.result!);
+          console.log(reader.result);
+        };
+        reader.readAsDataURL(this.images[i]);
+      }
+      this.urls = [];
+
+    } else {
+      this.urls = [];
+    }
   }
 
 
-  // NO BORRAR ---------------------------
-
-  /* addTour() {
+  addTour() {
     const tour: Tour = {
-      id: parseInt(uuidv4()),
+      id: this.id,
       id_categoria: this.form.value.id_categoria,
       categoria: '',
       nombre: this.form.value.nombre,
@@ -70,25 +84,28 @@ export class NavbarAdminComponent {
     }
 
     this._tourService.saveTour(tour).subscribe(() => {
-      Swal.fire({
-        title: "ACTUALIZADO CON ÉXITO!",
-        icon: "success"
-      }); 
+      this.addImage(tour.id!);  
       this.closeModal();
+      this.form.setValue({
+        id_categoria: '',
+        nombre: '',
+        descripcion: '',
+        precio: ''
+      });
     });
-  } */
+  }
 
-  //--------------------------------------
   
   addImage(id_tour: number) {
     this._tourService.saveImagen(id_tour, this.images).subscribe(() => {
+      this._tourService.tourAdded.emit();  
       Swal.fire({
         title: "GUARDADO CON ÉXITO!",
         icon: "success"
       }); 
     });
   }
-  
+
 
   getCategorias() {
     this._tourService.getCategorias().subscribe((data: Tour[]) => {

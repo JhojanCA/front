@@ -68,6 +68,15 @@
     flex-direction: row;
 }
 
+.form-group .preview-img {
+    width: 23%;
+    height: 8rem;
+    object-fit: cover;
+    object-position: center;
+    margin: 0.4rem;
+    border-radius: 10px;
+}
+
 .modal-title,
 .form-label {
     font-weight: bold;

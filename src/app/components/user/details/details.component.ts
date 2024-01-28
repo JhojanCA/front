@@ -48,7 +48,6 @@ export class DetailsComponent {
   getImagenes(id: number) {
     this._tourService.getImagenes(id).subscribe((data: Tour[]) => {
       this.images = data;
-      console.log(data);
     })
   }
 

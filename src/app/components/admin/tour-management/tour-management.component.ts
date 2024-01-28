@@ -15,6 +15,8 @@ export class TourManagementComponent {
   formMod: FormGroup;
   listTours: Tour[] = [];
   listCategorias: Tour[] = [];
+  images: File[] = [];
+  urls: (string | ArrayBuffer)[] = [];
   loading: boolean = false;
 
   constructor(private _tourService: TourService,
@@ -24,13 +26,29 @@ export class TourManagementComponent {
       id_categoria: [''],
       nombre: [''],
       descripcion: [''],
-      precio: [null],
-      // image: [''],
+      precio: ['']
     });
   }
 
   ngOnInit(): void {
     this.getListTours();
+
+    this._tourService.tourAdded.subscribe(() => {
+      this.getListTours();
+    });
+  }
+
+  onPhotoSelected(event: any) {
+    if (event.target.files && event.target.files.length > 0) {
+      this.images = event.target.files;
+      for (let i = 0; i < this.images.length; i++) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.urls.push(reader.result!);
+        };
+        reader.readAsDataURL(this.images[i]);
+      }
+    }
   }
 
   getListTours() {
@@ -50,6 +68,12 @@ export class TourManagementComponent {
         precio: data[0].precio,
       });
     })    
+  }
+
+  getImagenes(id: number) {
+    this._tourService.getImagenes(id).subscribe((data: Tour[]) => {
+      this.images
+    })
   }
 
   getCategorias() {
