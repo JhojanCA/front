@@ -77,12 +77,15 @@ export class TourManagementComponent {
     this.loading = true;
     this._tourService.getListTours().subscribe((data: Tour[]) => {
       this.listTours = data;
-      this.loading = false;
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000);
     })
   }
 
 
   getTour(id: number) {
+    this.loading = true;
     this._tourService.getTour(id).subscribe((data: Tour[]) => {
       this.formMod.setValue({
         id_categoria: data[0].id_categoria,
@@ -92,6 +95,9 @@ export class TourManagementComponent {
       });
       this.getImagenes(id);
       this.id_tour = id;
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000);
     })    
   }
 

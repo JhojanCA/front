@@ -41,7 +41,9 @@ export class DetailsComponent {
     this._tourService.getTour(id).subscribe((data: Tour[]) => {
       this.tour = data;
       this.getImagenes(id);
-      this.loading = false;
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000);
     })
   }
   
@@ -55,7 +57,9 @@ export class DetailsComponent {
     this.loading = true;
     this._tourService.getListTours().subscribe((data: Tour[]) => {
       this.listTours = data;
-      this.loading = false;
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000);
     })
   }
 
