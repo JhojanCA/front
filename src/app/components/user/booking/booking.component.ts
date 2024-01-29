@@ -21,7 +21,9 @@ export class BookingComponent {
     this.loading = true;
     this._tourService.getListTours().subscribe((data: Tour[]) => {
       this.listTours = data;
-      this.loading = false;
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000);
     })
   }
 }

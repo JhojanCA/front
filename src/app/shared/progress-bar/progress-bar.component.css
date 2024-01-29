@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&family=Poppins&display=swap');
+
+.fondo {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.load {
+    width: 200px;
+    margin: 1rem;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 4rem;
+    color: #fff;
+}
+
+#boat {
+    animation: moveBoat 2s infinite;
+}
+
+@keyframes moveBoat {
+    0% {
+        transform: unset;
+    }
+
+    25% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: unset;
+    }
+
+    75% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: unset;
+    }
+}
+
+#ola1 {
+    animation: moveOla 1.5s infinite linear;
+}
+
+@keyframes moveOla {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-80%);
+    }
+}
+
+#ola2 {
+    animation: moveOla2 1.5s infinite linear;
+}
+
+@keyframes moveOla2 {
+    0% {
+        transform: translateX(82%);
+    }
+
+    100% {
+        transform: translateX(2%);
+    }
+}
