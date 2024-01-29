@@ -28,7 +28,7 @@
         </div>
         <h2>{{ tour[0].precio | currency:'$ ':'symbol':'3.0' }}</h2>
         <p>{{ tour[0].descripcion }}</p>
-        <button type="button" class="btn btn-primary btn-lg mt-2" routerLink="/tour_reservation">Reservar</button>
+        <button type="button" class="btn btn-primary btn-lg mt-2" routerLink="/tour_reservation/{{ tour[0].id }}">Reservar</button>
     </div>
 </div>
 

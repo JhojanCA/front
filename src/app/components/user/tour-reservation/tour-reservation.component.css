@@ -21,6 +21,8 @@ h2 {
     border: none;
     border-radius: 50px;
     font-weight: bold;
+    transition: 1s ease-out;
+    transition: width 1s ease-out, height 1s ease-out;
 }
 
 .form-group {

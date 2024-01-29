@@ -134,18 +134,20 @@
 .overlay {
     position: absolute;
     width: 100%;
-    height: 0;
+    max-height: 0;
     bottom: 0;
     left: 0;
     right: 0;
     background-color: #fff;
     overflow: hidden;
     transition: .4s ease;
-    padding-inline: 16px;
 }
 
 .container .card:hover .overlay {
-    height: 90%;
+    max-height: 80%;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+    padding-inline: 1rem;
 }
 
 .container .card .overlay h2 {

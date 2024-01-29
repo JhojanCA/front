@@ -2,63 +2,68 @@
 
 <h2>INGRESE SUS DATOS</h2>
 <div class="d-flex justify-content-center mt-4">
-    <div class="container">
-        <div class="form-group mb-2">
-            <label for="tour" class="col-1 col-form-label">Tour</label>
-            <div class="col-5">
-                <input type="text" class="form-control" id="tour" value="Tour Por el Río" readonly>
+    <form [formGroup]="form">
+        <div class="container">
+            <div class="form-group mb-2">
+                <label for="tour" class="col-1 col-form-label">Tour</label>
+                <div class="col-5">
+                    <input type="text" class="form-control" [value]="id_tour" readonly>
+                </div>
             </div>
-        </div>
-        <div class="form-group mt-2">
-            <div class="col-6 m-2 me-4">
-                <label class="form-label">Nombre completo</label>
-                <input type="text" class="form-control" id="nombre" autocomplete="off">
+            <div class="form-group mt-2">
+                <div class="col-6 m-2 me-4">
+                    <label class="form-label">Nombre completo</label>
+                    <input formControlName="nombre" type="text" class="form-control">
+                </div>
+                <div class="col-6 m-2 me-4">
+                    <label class="form-label">Correo electrónico</label>
+                    <input formControlName="correo" type="email" class="form-control">
+                </div>
             </div>
-            <div class="col-6 m-2 me-4">
-                <label class="form-label">Correo electrónico</label>
-                <input type="email" class="form-control" id="correo" autocomplete="off">
+            <div class="form-group mt-2">
+                <div class="col-6 m-2 me-4">
+                    <label class="form-label">Teléfono</label>
+                    <input formControlName="telefono" type="number" class="form-control">
+                </div>
+                <div class="col-6 m-2 me-4">
+                    <label class="form-label">N° de personas</label>
+                    <input formControlName="num_personas" type="number" class="form-control">
+                </div>
             </div>
-        </div>
-        <div class="form-group mt-2">
-            <div class="col-6 m-2 me-4">
-                <label class="form-label">Teléfono</label>
-                <input type="number" class="form-control" id="telefono" autocomplete="off">
-            </div>
-            <div class="col-6 m-2 me-4">
-                <label class="form-label">N° de personas</label>
-                <input type="number" class="form-control" id="cantidad" autocomplete="off" value="1">
-            </div>
-        </div>
-        <div class="form-group mt-2">
-            <div class="col-6 m-2 me-4">
-                <label class="form-label">Fecha</label>
-                <input type="date" class="form-control" id="fecha" autocomplete="off">
-            </div>
-            <div class="col-6 m-2 me-4 d-flex flex-column">
-                <label class="form-label">Hora</label>
-                <div class="radio-group">
-                    <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off">
-                    <label class="btn btn-outline-dark" for="option1">9:00 AM</label>
+            <div class="form-group mt-2">
+                <div class="col-6 m-2 me-4">
+                    <label class="form-label">Fecha</label>
+                    <input formControlName="fecha" type="date" class="form-control">
+                </div>
+                <div class="col-6 m-2 me-4 d-flex flex-column">
+                    <label class="form-label">Hora</label>
+                    <div class="radio-group">
+                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora1" value="09:00">
+                        <label class="btn btn-outline-dark" for="hora1">9:00 AM</label>
                     
-                    <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                    <label class="btn btn-outline-dark" for="option2">10:00 AM</label>
-
-                    <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
-                    <label class="btn btn-outline-dark" for="option3">11:00 AM</label>
+                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora2" value="10:00">
+                        <label class="btn btn-outline-dark" for="hora2">10:00 AM</label>
+                    
+                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora3" value="11:00">
+                        <label class="btn btn-outline-dark" for="hora3">11:00 AM</label>
+                    </div>
+                    <div class="radio-group">
+                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora4" value="15:00">
+                        <label class="btn btn-outline-dark" for="hora4">3:00 PM</label>
+                    
+                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora5" value="16:00">
+                        <label class="btn btn-outline-dark" for="hora5">4:00 PM</label>
+                    
+                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora6" value="17:00">
+                        <label class="btn btn-outline-dark" for="hora6">5:00 PM</label>
+                    </div>        
                 </div>
-                <div class="radio-group">
-                    <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                    <label class="btn btn-outline-dark" for="option4">3:00 PM</label>
-                    <input type="radio" class="btn-check" name="options" id="option5" autocomplete="off">
-                    <label class="btn btn-outline-dark" for="option5">4:00 PM</label>
-                    <input type="radio" class="btn-check" name="options" id="option6" autocomplete="off">
-                    <label class="btn btn-outline-dark" for="option6">5:00 PM</label>
-                </div>
-                
+            </div>
+            <div class="form-group mt-4">
+                <button type="button" class="btn btn-primary mb-2" (click)="addReserva()">
+                    Continuar&nbsp;<i class="fa-solid fa-circle-right"></i>
+                </button>
             </div>
         </div>
-        <div class="form-group  mt-4">
-            <button type="button" class="btn btn-primary mb-2">Siguiente&ensp;<i class="fa-solid fa-circle-right"></i></button>
-        </div>
-    </div>
+    </form>
 </div>
