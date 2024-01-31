@@ -2,7 +2,7 @@
 
 <h2>INGRESE SUS DATOS</h2>
 <div class="d-flex justify-content-center mt-4">
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="addReserva()">
         <div class="container">
             <div class="form-group mb-2">
                 <label for="tour" class="col-1 col-form-label">Tour</label>
@@ -13,27 +13,32 @@
             <div class="form-group mt-2">
                 <div class="col-6 m-2 me-4">
                     <label class="form-label">Nombre completo</label>
-                    <input formControlName="nombre" type="text" class="form-control">
+                    <input formControlName="nombre" type="text" class="form-control" 
+                    [ngClass]="{'is-invalid': form.get('nombre')?.invalid && form.get('nombre')?.touched}">
                 </div>
                 <div class="col-6 m-2 me-4">
                     <label class="form-label">Correo electrónico</label>
-                    <input formControlName="correo" type="email" class="form-control">
+                    <input formControlName="correo" type="email" class="form-control" 
+                    [ngClass]="{'is-invalid': form.get('correo')?.invalid && form.get('correo')?.touched}">
                 </div>
             </div>
             <div class="form-group mt-2">
                 <div class="col-6 m-2 me-4">
                     <label class="form-label">Teléfono</label>
-                    <input formControlName="telefono" type="number" class="form-control">
+                    <input formControlName="telefono" type="number" class="form-control"
+                    [ngClass]="{'is-invalid': form.get('telefono')?.invalid && form.get('telefono')?.touched}">
                 </div>
                 <div class="col-6 m-2 me-4">
                     <label class="form-label">N° de personas</label>
-                    <input formControlName="num_personas" type="number" class="form-control">
+                    <input formControlName="num_personas" type="number" class="form-control"
+                    [ngClass]="{'is-invalid': form.get('num_personas')?.invalid && form.get('num_personas')?.touched}">
                 </div>
             </div>
             <div class="form-group mt-2">
                 <div class="col-6 m-2 me-4">
                     <label class="form-label">Fecha</label>
-                    <input formControlName="fecha" type="date" class="form-control">
+                    <input formControlName="fecha" type="date" class="form-control"
+                    [ngClass]="{'is-invalid': form.get('fecha')?.invalid && form.get('fecha')?.touched}">
                 </div>
                 <div class="col-6 m-2 me-4 d-flex flex-column">
                     <label class="form-label">Hora</label>
@@ -60,9 +65,12 @@
                 </div>
             </div>
             <div class="form-group mt-4">
-                <button type="button" class="btn btn-primary mb-2" (click)="addReserva()">
+                <button type="submit" class="btn btn-primary mb-2" [disabled]="form.invalid">
                     Continuar&nbsp;<i class="fa-solid fa-circle-right"></i>
                 </button>
+                <!-- <button type="button" class="btn btn-primary mb-2" (click)="addReserva()">
+                    Continuar&nbsp;<i class="fa-solid fa-circle-right"></i>
+                </button> -->
             </div>
         </div>
     </form>

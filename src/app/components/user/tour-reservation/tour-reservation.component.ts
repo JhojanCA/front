@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Reserva } from 'src/app/interfaces/reserva';
 import { TourService } from 'src/app/services/tour.service';
@@ -21,12 +21,12 @@ export class TourReservationComponent {
     this.form = this.fb.group({
       id_usuario: [''],
       id_tour: [''],
-      nombre: [''],
-      correo: [''],
-      telefono: [''],
-      num_personas: [1],
-      fecha: [''],
-      hora: [''],
+      nombre: ['', Validators.required],
+      correo: ['', Validators.required],
+      telefono: ['', Validators.required],
+      num_personas: ['', Validators.required],
+      fecha: ['', Validators.required],
+      hora: ['', Validators.required],
     });
 
     this.id_tour = Number(aRoute.snapshot.paramMap.get('id_tour'));
@@ -35,7 +35,7 @@ export class TourReservationComponent {
 
   addReserva(){
     const reserva: Reserva = {
-      id_usuario: 1,
+      id_usuario: 4,
       id_tour: this.id_tour,
       nombre: this.form.value.nombre,
       correo: this.form.value.correo,

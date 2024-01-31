@@ -25,10 +25,10 @@ export class TourManagementComponent {
               private fb: FormBuilder) {
 
     this.formMod = this.fb.group({
-      id_categoria: [''],
-      nombre: [''],
-      descripcion: [''],
-      precio: ['']
+      id_categoria: ['', Validators.required],
+      nombre: ['', Validators.required],
+      descripcion: ['', Validators.required],
+      precio: ['', Validators.required]
     });
   }
 

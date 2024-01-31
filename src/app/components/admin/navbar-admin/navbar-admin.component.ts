@@ -1,8 +1,7 @@
-import { Component, EventEmitter, inject, Output, TemplateRef } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, inject, TemplateRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationEnd } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Photo } from 'src/app/interfaces/photo';
 import { Tour } from 'src/app/interfaces/tour';
 import { TourService } from 'src/app/services/tour.service';
 import { v4 as uuidv4 } from 'uuid';
@@ -33,10 +32,11 @@ export class NavbarAdminComponent {
               private _tourService: TourService) {
 
     this.form = this.fb.group({
-      id_categoria: [''],
-      nombre: [''],
-      descripcion: [''],
-      precio: [''],
+      id_categoria: ['', Validators.required],
+      nombre: ['', Validators.required],
+      descripcion: ['', Validators.required],
+      precio: ['', Validators.required],
+      image: ['', Validators.required],
     });
     
     this.router.events.subscribe((event) => {
@@ -47,9 +47,7 @@ export class NavbarAdminComponent {
   }
 
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
 
   onPhotoSelected(event: any) {
@@ -59,7 +57,6 @@ export class NavbarAdminComponent {
         const reader = new FileReader();
         reader.onload = () => {
           this.urls.push(reader.result!);
-          console.log(reader.result);
         };
         reader.readAsDataURL(this.images[i]);
       }
@@ -90,7 +87,8 @@ export class NavbarAdminComponent {
         id_categoria: '',
         nombre: '',
         descripcion: '',
-        precio: ''
+        precio: '',
+        image: '',
       });
     });
   }
