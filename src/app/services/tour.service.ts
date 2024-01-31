@@ -3,6 +3,7 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../environment/environment';
 import { Photo } from '../interfaces/photo';
+import { Reserva } from '../interfaces/reserva';
 import { Tour } from '../interfaces/tour';
 
 @Injectable({
@@ -68,5 +69,9 @@ export class TourService {
 
   getCategorias(): Observable<Tour[]> {
     return this.http.get<Tour[]>(`${this.url}categorias`);
+  }
+
+  saveReserva(reserva: Reserva): Observable<void> {
+    return this.http.post<void>(`${this.url}reserva`, reserva);
   }
 }
