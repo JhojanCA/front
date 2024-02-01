@@ -47,8 +47,8 @@ export class DetailsComponent {
     })
   }
   
-  getImagenes(id: number) {
-    this._tourService.getImagenes(id).subscribe((data: Tour[]) => {
+  getImagenes(id_tour: number) {
+    this._tourService.getImagenes(id_tour).subscribe((data: Tour[]) => {
       this.images = data;
     })
   }

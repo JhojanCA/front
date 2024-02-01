@@ -11,38 +11,38 @@ import { Tour } from '../interfaces/tour';
 })
 export class TourService {
   @Output() tourAdded: EventEmitter<void> = new EventEmitter();
-  private appUrl: string;
   private apiUrl: string;
-  private url: string;
+  private tourUrl: string;
+  private photoUrl: string;
 
   constructor(private http: HttpClient) {
-    this.appUrl = environment.endpoint;
-    this.apiUrl = 'api/tour/';
-    this.url = `${this.appUrl}${this.apiUrl}`;
+    this.apiUrl = environment.endpoint;
+    this.tourUrl = `${this.apiUrl}api/tour/`;
+    this.photoUrl = `${this.apiUrl}api/photo/`;
   } 
 
   getListTours(): Observable<Tour[]> {
-    return this.http.get<Tour[]>(`${this.url}`);
+    return this.http.get<Tour[]>(`${this.tourUrl}`);
   }
   
   getTour(id: number): Observable<Tour[]> {
-    return this.http.get<Tour[]>(`${this.url}${id}`);
+    return this.http.get<Tour[]>(`${this.tourUrl}${id}`);
   }  
   
   saveTour(tour: Tour): Observable<void> {
-    return this.http.post<void>(`${this.url}`, tour);
+    return this.http.post<void>(`${this.tourUrl}`, tour);
   }
   
   deleteTour(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.url}${id}`);
+    return this.http.delete<void>(`${this.tourUrl}${id}`);
   } 
 
   putTour(id: number, tour: Tour): Observable<void> {
-    return this.http.put<void>(`${this.url}${id}`, tour);
+    return this.http.put<void>(`${this.tourUrl}${id}`, tour);
   }
 
-  getImagenes(id: number): Observable<Tour[]> {
-    return this.http.get<Tour[]>(`${this.url}imgs/${id}`);
+  getImagenes(id_tour: number): Observable<Tour[]> {
+    return this.http.get<Tour[]>(`${this.photoUrl}${id_tour}`);
   } 
 
   saveImagen(id_tour: number, photos: File[]): Observable<void> {
@@ -51,11 +51,11 @@ export class TourService {
     for (let i = 0; i < photos.length; i++) {
       form.append('image', photos[i]);
     }
-    return this.http.post<void>(`${this.url}imgs`, form);
+    return this.http.post<void>(`${this.photoUrl}`, form);
   }
 
   deleteImagen(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.url}imgs/${id}`)
+    return this.http.delete<void>(`${this.photoUrl}${id}`)
   }
 
   putImagen(id: number, photos: File[]): Observable<void> {
@@ -64,14 +64,14 @@ export class TourService {
     for (let i = 0; i < photos.length; i++) {
       form.append('image', photos[i]);
     }
-    return this.http.put<void>(`${this.url}imgs/${id}`, form);
+    return this.http.put<void>(`${this.photoUrl}${id}`, form);
   }
 
   getCategorias(): Observable<Tour[]> {
-    return this.http.get<Tour[]>(`${this.url}categorias`);
+    return this.http.get<Tour[]>(`${this.tourUrl}categorias`);
   }
 
   saveReserva(reserva: Reserva): Observable<void> {
-    return this.http.post<void>(`${this.url}reserva`, reserva);
+    return this.http.post<void>(`${this.tourUrl}reserva`, reserva);
   }
 }
