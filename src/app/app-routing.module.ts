@@ -8,6 +8,7 @@ import { MainAdminComponent } from './components/admin/main-admin/main-admin.com
 import { BookingManagementComponent } from './components/admin/booking-management/booking-management.component';
 import { TourManagementComponent } from './components/admin/tour-management/tour-management.component';
 import { TourReservationComponent } from './components/user/tour-reservation/tour-reservation.component';
+import { LoginRegisterComponent } from './components/login-register/login-register.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: LoginRegisterComponent
   },
   {
     path: 'booking',

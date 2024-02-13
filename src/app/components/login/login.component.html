@@ -1,15 +1,21 @@
-<div class="d-flex justify-content-center align-items-center vh-100">
-    <div class="login-container">
-        <img src="assets/Logo.png" width="90">
-        <div class="form-floating mt-3 mb-3">
-            <input type="text" class="form-control" id="usuario" placeholder="">
-            <label for="usuario">Usuario</label>
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+
+<div *ngIf="!loading" class="d-flex justify-content-center align-items-center vh-100">
+    <form [formGroup]="form" autocomplete="off">
+        <div class="login-container">
+            <img src="assets/Logo.png" width="90">
+            <div class="form-floating mt-3 mb-3">
+                <input formControlName="usuario" type="text" class="form-control" id="usuario" placeholder=""
+                    [ngClass]="{'is-invalid': form.get('usuario')?.invalid && form.get('usuario')?.touched}">
+                <label for="usuario">Usuario</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input formControlName="password" type="password" class="form-control" id="password" placeholder=""
+                    [ngClass]="{'is-invalid': form.get('password')?.invalid && form.get('password')?.touched}">
+                <label for="password">Contraseña</label>
+            </div>
+            <button type="button" class="btn btn-primary mt-3 mb-1" (click)="login()">Iniciar Sesión</button>
+            <button type="button" class="btn btn-outline-primary mt-1 mb-1" routerLink="/register">Registrarse</button>
         </div>
-        <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="contrasena" placeholder="">
-            <label for="contrasena">Contraseña</label>
-        </div>
-        <button type="button" class="btn btn-primary mt-3 mb-1" routerLink="/main">Iniciar Sesión</button>
-        <button type="button" class="btn btn-outline-primary mt-1 mb-1">Registrarse</button>
-    </div>
+    </form>
 </div>

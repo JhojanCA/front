@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,16 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
   sesion: boolean = false;
 
+  constructor(private router: Router) {
+    
+  }
+
   iniciarSesion() {
     this.sesion = true;
+  }
+
+  cerrarSesion() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 }

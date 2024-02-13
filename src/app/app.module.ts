@@ -16,8 +16,10 @@ import { TourManagementComponent } from './components/admin/tour-management/tour
 import { BookingManagementComponent } from './components/admin/booking-management/booking-management.component';
 import { TourReservationComponent } from './components/user/tour-reservation/tour-reservation.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component';
+import { LoginRegisterComponent } from './components/login-register/login-register.component'
+import { AddTokenInterceptor } from './utils/add-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { ProgressBarComponent } from './shared/progress-bar/progress-bar.compone
     TourManagementComponent,
     BookingManagementComponent,
     TourReservationComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    LoginRegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,9 @@ import { ProgressBarComponent } from './shared/progress-bar/progress-bar.compone
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

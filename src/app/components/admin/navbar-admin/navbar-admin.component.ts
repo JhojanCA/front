@@ -111,6 +111,10 @@ export class NavbarAdminComponent {
     });
   }
 
+  cerrarSesion() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
+  }
 
   openModal(content: TemplateRef<any>) {
 		this.modal.open(content, { windowClass: 'dark-modal', size: 'lg' });

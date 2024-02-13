@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&family=Poppins&display=swap');
 
 .login-container {
-    width: 450px;
-    padding-inline: 1rem;
-    padding-block: 2rem;
+    width: 700px;
+    padding: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,8 +17,16 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.login-container .form {
+    width: 92%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+
 .login-container .form-floating {
-    width: 80%;
+    width: 100%;
+    margin-inline: 1rem;
 }
 
 .login-container .form-control {
@@ -38,8 +45,19 @@
     font-weight: bold;
 }
 
+.login-container .group-buttons {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+}
+
+.login-container .btn {
+    margin-inline: 0.5rem;
+}
+
 .login-container .btn-primary {
-    width: 80%;
+    width: 90%;
     height: 45px;
     background: #000850;
     color: #fff;
@@ -50,7 +68,7 @@
 }
 
 .login-container .btn-outline-primary {
-    width: 80%;
+    width: 90%;
     height: 45px;
     color: #000850;
     border-color: #000850;

@@ -24,6 +24,12 @@
                             <i class="fa-solid fa-user"></i>&ensp;Jhojan
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <button type="button" (click)="cerrarSesion()"
+                                class="btn btn-outline-primary">Salir</button>
+                        </a>
+                    </li>
                 </ul>
             </form>
         </div>
@@ -40,18 +46,21 @@
             <div class="form-group">
                 <div class="col-4 p-2">
                     <label class="form-label">Nombre</label>
-                    <input formControlName="nombre" type="text" class="form-control" [ngClass]="{'is-invalid': form.get('nombre')?.invalid && form.get('nombre')?.touched}">
+                    <input formControlName="nombre" type="text" class="form-control"
+                        [ngClass]="{'is-invalid': form.get('nombre')?.invalid && form.get('nombre')?.touched}">
                 </div>
                 <div class="col-4 p-2">
                     <label class="form-label">Precio</label>
                     <div class="input-group">
                         <span class="input-group-text">$</span>
-                        <input formControlName="precio" type="number" class="form-control" [ngClass]="{'is-invalid': form.get('precio')?.invalid && form.get('precio')?.touched}">
+                        <input formControlName="precio" type="number" class="form-control"
+                            [ngClass]="{'is-invalid': form.get('precio')?.invalid && form.get('precio')?.touched}">
                     </div>
                 </div>
                 <div class="col-4 p-2">
                     <label class="form-label">Categoría</label>
-                    <select formControlName="id_categoria" class="form-select" [ngClass]="{'is-invalid': form.get('id_categoria')?.invalid && form.get('id_categoria')?.touched}">
+                    <select formControlName="id_categoria" class="form-select"
+                        [ngClass]="{'is-invalid': form.get('id_categoria')?.invalid && form.get('id_categoria')?.touched}">
                         <option value="">Seleccione...</option>
                         <option *ngFor="let item of listCategorias" value="{{ item.id }}">
                             {{ item.categoria }}
@@ -62,15 +71,16 @@
             <div class="form-group">
                 <div class="col-12 p-2">
                     <label class="form-label">Descripción</label>
-                    <textarea formControlName="descripcion" class="form-control" rows="5" [ngClass]="{'is-invalid': form.get('descripcion')?.invalid && form.get('descripcion')?.touched}"></textarea>
-                    </div>
+                    <textarea formControlName="descripcion" class="form-control" rows="5"
+                        [ngClass]="{'is-invalid': form.get('descripcion')?.invalid && form.get('descripcion')?.touched}"></textarea>
+                </div>
             </div>
             <div class="form-group">
                 <div class="col-12 p-2">
                     <label class="form-label">Imágenes</label>
-                    <input formControlName="image" class="form-control mb-1" type="file" multiple accept="image/*" 
-                    (change)="onPhotoSelected($event)" 
-                    [ngClass]="{'is-invalid': form.get('image')?.invalid && form.get('image')?.touched}">
+                    <input formControlName="image" class="form-control mb-1" type="file" multiple accept="image/*"
+                        (change)="onPhotoSelected($event)"
+                        [ngClass]="{'is-invalid': form.get('image')?.invalid && form.get('image')?.touched}">
                     <img *ngFor="let url of urls" [src]="url" class="preview-img">
                 </div>
             </div>
@@ -81,4 +91,3 @@
         </div>
     </form>
 </ng-template>
-
