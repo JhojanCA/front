@@ -13,64 +13,68 @@
             <div class="form-group mt-2">
                 <div class="col-6 m-2 me-4">
                     <label class="form-label">Nombre completo</label>
-                    <input formControlName="nombre" type="text" class="form-control" 
-                    [ngClass]="{'is-invalid': form.get('nombre')?.invalid && form.get('nombre')?.touched}">
+                    <input formControlName="nombre" type="text" class="form-control" [(ngModel)]="usuario.nombre"
+                        [ngClass]="{'is-invalid': form.get('nombre')?.invalid && form.get('nombre')?.touched}">
                 </div>
                 <div class="col-6 m-2 me-4">
                     <label class="form-label">Correo electrónico</label>
-                    <input formControlName="correo" type="email" class="form-control" 
-                    [ngClass]="{'is-invalid': form.get('correo')?.invalid && form.get('correo')?.touched}">
+                    <input formControlName="correo" type="email" class="form-control" [(ngModel)]="usuario.correo"
+                        [ngClass]="{'is-invalid': form.get('correo')?.invalid && form.get('correo')?.touched}">
                 </div>
             </div>
             <div class="form-group mt-2">
                 <div class="col-6 m-2 me-4">
                     <label class="form-label">Teléfono</label>
-                    <input formControlName="telefono" type="number" class="form-control"
-                    [ngClass]="{'is-invalid': form.get('telefono')?.invalid && form.get('telefono')?.touched}">
+                    <input formControlName="telefono" type="number" class="form-control" [(ngModel)]="usuario.telefono"
+                        [ngClass]="{'is-invalid': form.get('telefono')?.invalid && form.get('telefono')?.touched}">
                 </div>
                 <div class="col-6 m-2 me-4">
                     <label class="form-label">N° de personas</label>
-                    <input formControlName="num_personas" type="number" class="form-control"
-                    [ngClass]="{'is-invalid': form.get('num_personas')?.invalid && form.get('num_personas')?.touched}">
+                    <input formControlName="num_personas" type="number" class="form-control" min="1"
+                        [(ngModel)]="num_per" (ngModelChange)="calcular()"
+                        [ngClass]="{'is-invalid': form.get('num_personas')?.invalid && form.get('num_personas')?.touched}">
                 </div>
             </div>
             <div class="form-group mt-2">
                 <div class="col-6 m-2 me-4">
                     <label class="form-label">Fecha</label>
                     <input formControlName="fecha" type="date" class="form-control"
-                    [ngClass]="{'is-invalid': form.get('fecha')?.invalid && form.get('fecha')?.touched}">
+                        [ngClass]="{'is-invalid': form.get('fecha')?.invalid && form.get('fecha')?.touched}">
                 </div>
                 <div class="col-6 m-2 me-4 d-flex flex-column">
                     <label class="form-label">Hora</label>
                     <div class="radio-group">
-                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora1" value="09:00">
+                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora1"
+                            value="09:00">
                         <label class="btn btn-outline-dark" for="hora1">9:00 AM</label>
-                    
-                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora2" value="10:00">
+
+                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora2"
+                            value="10:00">
                         <label class="btn btn-outline-dark" for="hora2">10:00 AM</label>
-                    
-                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora3" value="11:00">
+
+                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora3"
+                            value="11:00">
                         <label class="btn btn-outline-dark" for="hora3">11:00 AM</label>
                     </div>
                     <div class="radio-group">
-                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora4" value="15:00">
+                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora4"
+                            value="15:00">
                         <label class="btn btn-outline-dark" for="hora4">3:00 PM</label>
-                    
-                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora5" value="16:00">
+
+                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora5"
+                            value="16:00">
                         <label class="btn btn-outline-dark" for="hora5">4:00 PM</label>
-                    
-                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora6" value="17:00">
+
+                        <input formControlName="hora" type="radio" class="btn-check" name="hora" id="hora6"
+                            value="17:00">
                         <label class="btn btn-outline-dark" for="hora6">5:00 PM</label>
-                    </div>        
+                    </div>
                 </div>
             </div>
             <div class="form-group mt-4">
                 <button type="submit" class="btn btn-primary mb-2" [disabled]="form.invalid">
-                    Continuar&nbsp;<i class="fa-solid fa-circle-right"></i>
+                    Pagar: {{ total | currency:'$':'symbol':'3.0' }}
                 </button>
-                <!-- <button type="button" class="btn btn-primary mb-2" (click)="addReserva()">
-                    Continuar&nbsp;<i class="fa-solid fa-circle-right"></i>
-                </button> -->
             </div>
         </div>
     </form>

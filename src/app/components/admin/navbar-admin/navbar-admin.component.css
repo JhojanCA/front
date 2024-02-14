@@ -86,3 +86,18 @@
     background: #000850;
     border: none;
 }
+
+.btn-outline-primary {
+    color: #fff;
+    border-color: #fff;
+    border-width: 2px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    transition: all 0.3s ease-out;
+}
+
+.btn-outline-primary:hover {
+    color: #000850;
+    background: #fff;
+    font-weight: bold;
+}

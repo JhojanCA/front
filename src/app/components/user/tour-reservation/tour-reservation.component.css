@@ -14,8 +14,9 @@ h2 {
 }
 
 .container button {
-    width: 30%;
+    width: auto;
     height: 45px;
+    padding-inline: 1rem;
     background: #000850;
     color: #fff;
     border: none;

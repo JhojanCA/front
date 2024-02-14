@@ -22,20 +22,17 @@
                             <i class="fa-solid fa-city"></i>&ensp;Nosotros
                         </a>
                     </li>
-                    <li *ngIf="!sesion" class="nav-item">
+                    <li *ngIf="!_userService.isLogged()" class="nav-item">
                         <a href="#" routerLink="/login">
-                            <button type="button" (click)="iniciarSesion()" class="btn btn-outline-primary">Iniciar
-                                Sesión</button>
+                            <button type="button" class="btn btn-outline-primary">Iniciar Sesión</button>
                         </a>
                     </li>
-                    <li *ngIf="!sesion" class="nav-item">
+                    <li *ngIf="_userService.isLogged()" class="nav-item">
                         <a href="#">
-                            <button type="button" (click)="cerrarSesion()"
-                                class="btn btn-outline-primary">Salir</button>
+                            <button type="button" (click)="_userService.cerrarSesion()" class="btn btn-outline-primary">
+                                <i class="fa-solid fa-power-off"></i>&nbsp;Salir
+                            </button>
                         </a>
-                    </li>
-                    <li *ngIf="sesion" class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-user"></i>&ensp;Jhojan</a>
                     </li>
                 </ul>
             </form>

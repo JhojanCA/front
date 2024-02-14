@@ -18,8 +18,7 @@
                 <ng-template let-fill="fill" let-index="index">
                     <i class="{{ fill >= 90 ? 'fa-solid fa-star' : 
                                 (fill >= 40 && fill < 90 ? 'fa-solid fa-star-half-stroke' : 
-                                'fa-regular fa-star') }}"
-                    [class.filled]="fill === 100"></i>
+                                'fa-regular fa-star') }}" [class.filled]="fill === 100"></i>
                 </ng-template>
             </ngb-rating>
             <h6>
@@ -28,14 +27,16 @@
         </div>
         <h2>{{ tour[0].precio | currency:'$ ':'symbol':'3.0' }}</h2>
         <p>{{ tour[0].descripcion }}</p>
-        <button type="button" class="btn btn-primary btn-lg mt-2" routerLink="/tour_reservation/{{ tour[0].id }}">Reservar</button>
+        <button type="button" class="btn btn-primary btn-lg mt-2"
+            routerLink="/tour_reservation/{{ tour[0].id }}">Reservar</button>
     </div>
 </div>
 
 <div class="row options">
     <h2>MÁS OPCIONES DISPONIBLES</h2>
     <div class="container">
-        <div *ngFor="let item of listTours" routerLink="/details/{{ item.id }}" (click)="scrollTo('infotour')" class="card">
+        <div *ngFor="let item of listTours" routerLink="/details/{{ item.id }}" (click)="scrollTo('infotour')"
+            class="card">
             <img [src]="'http://localhost:3000/' + item.image" />
             <div class="nombre">
                 <h5>{{ item.nombre }}</h5>

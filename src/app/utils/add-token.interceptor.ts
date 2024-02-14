@@ -32,7 +32,6 @@ export class AddTokenInterceptor implements HttpInterceptor {
             showConfirmButton: false,
             timer: 2000
           });
-          window.history.replaceState({}, document.title, "/login");
           this.router.navigate(['/login']);
         }
         return throwError(() => error);

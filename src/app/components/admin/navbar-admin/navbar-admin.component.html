@@ -19,15 +19,11 @@
                             <i class="fa-solid fa-circle-plus"></i>&ensp;Agregar
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" routerLink="/login">
-                            <i class="fa-solid fa-user"></i>&ensp;Jhojan
-                        </a>
-                    </li>
-                    <li class="nav-item">
+                    <li *ngIf="_userService.isLogged()" class="nav-item">
                         <a href="#">
-                            <button type="button" (click)="cerrarSesion()"
-                                class="btn btn-outline-primary">Salir</button>
+                            <button type="button" (click)="_userService.cerrarSesion()" class="btn btn-outline-primary">
+                                <i class="fa-solid fa-power-off"></i>&nbsp;Salir
+                            </button>
                         </a>
                     </li>
                 </ul>

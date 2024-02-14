@@ -5,7 +5,8 @@ export interface Reserva {
     nombre: string;
     correo: string;
     telefono: number;
-    num_personas: number,
+    num_personas: number;
+    total: number;
     fecha: Date;
-    hora: Date
+    hora: Date;
 }

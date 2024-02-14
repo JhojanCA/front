@@ -13,9 +13,8 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      
     const token = localStorage.getItem('token');
-    // const id = localStorage.getItem('id');
-    
     if (!token) {
       Swal.fire({
         icon: "info",
@@ -23,7 +22,7 @@ export class AuthGuard implements CanActivate {
         showConfirmButton: false,
         timer: 2000
       });
-      window.history.replaceState({}, document.title, "/login");
+
       this.router.navigate(['/login']);
     }
     return true;

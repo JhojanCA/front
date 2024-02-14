@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,18 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  sesion: boolean = false;
+  _userService = inject(UserService);
 
   constructor(private router: Router) {
     
-  }
-
-  iniciarSesion() {
-    this.sesion = true;
-  }
-
-  cerrarSesion() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/']);
   }
 }

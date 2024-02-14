@@ -4,6 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Tour } from 'src/app/interfaces/tour';
 import { TourService } from 'src/app/services/tour.service';
+import { UserService } from 'src/app/services/user.service';
 import { v4 as uuidv4 } from 'uuid';
 import Swal from 'sweetalert2';
 
@@ -18,6 +19,7 @@ interface HtmlInputEvent extends Event {
 })
 export class NavbarAdminComponent {
   private modal = inject(NgbModal);
+  _userService = inject(UserService);
   esTourMan: boolean = false;
   loading: boolean = false;
   id: number = 0;
@@ -109,11 +111,6 @@ export class NavbarAdminComponent {
     this._tourService.getCategorias().subscribe((data: Tour[]) => {
       this.listCategorias = data;
     });
-  }
-
-  cerrarSesion() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/']);
   }
 
   openModal(content: TemplateRef<any>) {
