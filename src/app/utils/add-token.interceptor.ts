@@ -9,6 +9,7 @@ import {
 import { catchError, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { ErrorService } from '../services/error.service';
+import Swal from 'sweetalert2';
 
 @Injectable()
 export class AddTokenInterceptor implements HttpInterceptor {
@@ -25,8 +26,14 @@ export class AddTokenInterceptor implements HttpInterceptor {
      return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if(error.status === 401){
-          this._errorService.msjError(error)
-          this.router.navigate(['/login'])
+          Swal.fire({
+            icon: "info",
+            title: "Inicie sesión",
+            showConfirmButton: false,
+            timer: 2000
+          });
+          window.history.replaceState({}, document.title, "/login");
+          this.router.navigate(['/login']);
         }
         return throwError(() => error);
       })

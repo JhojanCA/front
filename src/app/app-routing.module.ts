@@ -9,6 +9,7 @@ import { BookingManagementComponent } from './components/admin/booking-managemen
 import { TourManagementComponent } from './components/admin/tour-management/tour-management.component';
 import { TourReservationComponent } from './components/user/tour-reservation/tour-reservation.component';
 import { LoginRegisterComponent } from './components/login-register/login-register.component';
+import { AuthGuard } from './utils/auth.guard';
 
 const routes: Routes = [
   {
@@ -28,20 +29,13 @@ const routes: Routes = [
     component: BookingComponent
   },
   {
-    path: 'details',
-    component: DetailsComponent
-  },
-  {
     path: 'details/:id',
     component: DetailsComponent
   },
   {
-    path: 'tour_reservation',
-    component: TourReservationComponent
-  },
-  {
     path: 'tour_reservation/:id_tour',
-    component: TourReservationComponent
+    component: TourReservationComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'main',

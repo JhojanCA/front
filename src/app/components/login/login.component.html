@@ -3,7 +3,7 @@
 <div *ngIf="!loading" class="d-flex justify-content-center align-items-center vh-100">
     <form [formGroup]="form" autocomplete="off">
         <div class="login-container">
-            <img src="assets/Logo.png" width="90">
+            <a routerLink="/"><img src="assets/Logo.png" width="90"></a>
             <div class="form-floating mt-3 mb-3">
                 <input formControlName="usuario" type="text" class="form-control" id="usuario" placeholder=""
                     [ngClass]="{'is-invalid': form.get('usuario')?.invalid && form.get('usuario')?.touched}">
