@@ -150,6 +150,11 @@
     padding-inline: 1rem;
 }
 
+.container .card a {
+    text-decoration: none;
+    color: #000;
+}
+
 .container .card .overlay h2 {
     font-family: "CynthoSlabW00-Bold", sans-serif;
     color: #000850;

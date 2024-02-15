@@ -6,13 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-admin.component.css']
 })
 export class MainAdminComponent {
-  loading: boolean = false;
-
-  ngOnInit(): void {
-    this.loading = true;
-    setTimeout(() => {
-      this.loading = false;
-    }, 1000);
-  }
 
 }

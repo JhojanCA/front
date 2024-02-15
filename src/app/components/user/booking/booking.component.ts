@@ -8,7 +8,8 @@ import { TourService } from 'src/app/services/tour.service';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent {
-  listTours: Tour[] = [];
+  listToursRiver: Tour[] = [];
+  listToursCity: Tour[] = [];
   loading: boolean = false;
 
   constructor(private _tourService: TourService) {}
@@ -20,7 +21,9 @@ export class BookingComponent {
   getListTours() {
     this.loading = true;
     this._tourService.getListTours().subscribe((data: Tour[]) => {
-      this.listTours = data;
+      this.listToursRiver = data.filter(tour => tour.categoria === 'Río Sinú');
+      this.listToursCity = data.filter(tour => tour.categoria === 'Ciudad');
+      console.log(this.listToursCity);
       setTimeout(() => {
         this.loading = false;
       }, 1000);

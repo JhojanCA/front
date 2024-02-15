@@ -56,7 +56,7 @@ export class DetailsComponent {
   getListTours() {
     this.loading = true;
     this._tourService.getListTours().subscribe((data: Tour[]) => {
-      this.listTours = data;
+      this.listTours = data.filter(tour => tour.id !== this.id);
       setTimeout(() => {
         this.loading = false;
       }, 1000);

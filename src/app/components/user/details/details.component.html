@@ -35,17 +35,18 @@
 <div class="row options">
     <h2>MÁS OPCIONES DISPONIBLES</h2>
     <div class="container">
-        <div *ngFor="let item of listTours" routerLink="/details/{{ item.id }}" (click)="scrollTo('infotour')"
-            class="card">
-            <img [src]="'http://localhost:3000/' + item.image" />
-            <div class="nombre">
-                <h5>{{ item.nombre }}</h5>
-                <h3>{{ item.precio | currency:'$':'symbol':'3.0' }}</h3>
-            </div>
-            <div class="overlay">
-                <h2>{{ item.nombre }}</h2>
-                <p>{{ item.descripcion }}</p>
-            </div>
+        <div *ngFor="let item of listTours" (click)="scrollTo('infotour')" class="card">
+            <a href="/details/{{ item.id }}">
+                <img [src]="'http://localhost:3000/' + item.image" />
+                <div class="nombre">
+                    <h5>{{ item.nombre }}</h5>
+                    <h3>{{ item.precio | currency:'$':'symbol':'3.0' }}</h3>
+                </div>
+                <div class="overlay">
+                    <h2>{{ item.nombre }}</h2>
+                    <p>{{ item.descripcion }}</p>
+                </div>
+            </a>
         </div>
     </div>
 </div>

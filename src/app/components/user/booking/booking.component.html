@@ -3,31 +3,30 @@
 
 <h2>TOURS POR EL RÍO SINÚ</h2>
 <div class="container">
-    <div *ngFor="let item of listTours" routerLink="/details/{{ item.id }}" class="card">
-        <img [src]="'http://localhost:3000/' + item.image" />
+    <div *ngFor="let tour of listToursRiver" routerLink="/details/{{ tour.id }}" class="card">
+        <img [src]="'http://localhost:3000/' + tour.image" />
         <div class="nombre">
-            <h5>{{ item.nombre }}</h5>
-            <h3>{{ item.precio | currency:'$':'symbol':'3.0' }}</h3>
+            <h5>{{ tour.nombre }}</h5>
+            <h3>{{ tour.precio | currency:'$':'symbol':'3.0' }}</h3>
         </div>
         <div class="overlay">
-            <h2>{{ item.nombre }}</h2>
-            <p>{{ item.descripcion }}</p>
+            <h2>{{ tour.nombre }}</h2>
+            <p>{{ tour.descripcion }}</p>
         </div>
     </div>
 </div>
 
 <h2>TOURS POR MONTERÍA</h2>
 <div class="container">
-    <div class="card">
-        <img src="assets/slider2.jpg" />
+    <div *ngFor="let tour of listToursCity" routerLink="/details/{{ tour.id }}" class="card">
+        <img [src]="'http://localhost:3000/' + tour.image" />
         <div class="nombre">
-            <h5>Iglesia</h5>
-            <h3>Precio</h3>
+            <h5>{{ tour.nombre }}</h5>
+            <h3>{{ tour.precio | currency:'$':'symbol':'3.0' }}</h3>
         </div>
         <div class="overlay">
-            <h2>AAA</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate maiores, non in dolore eos quisquam
-                illum nulla itaque veniam est laboriosam necessitatibus totam vitae ab quas autem placeat Eligendi?</p>
+            <h2>{{ tour.nombre }}</h2>
+            <p>{{ tour.descripcion }}</p>
         </div>
     </div>
 </div>
