@@ -72,9 +72,13 @@ export class TourService {
     return this.http.get<Tour[]>(`${this.tourUrl}categorias`);
   }
 
+  getReserva(codigo: number): Observable<Reserva[]> {
+    return this.http.get<Reserva[]>(`${this.bookingUrl}detail/${codigo}`);
+  }
+
   getReservas(): Observable<any> {
     return this.http.get<any>(`${this.bookingUrl}`);
-  }
+  }  
   
   getReservasFecha(fecha: string): Observable<Reserva[]> {
     return this.http.get<Reserva[]>(`${this.bookingUrl}${fecha}`);

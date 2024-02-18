@@ -1,7 +1,8 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, Renderer2, TemplateRef, ViewChild } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Reserva } from 'src/app/interfaces/reserva';
 import { TourService } from 'src/app/services/tour.service';
 
@@ -11,6 +12,8 @@ import { TourService } from 'src/app/services/tour.service';
   styleUrls: ['./booking-management.component.css']
 })
 export class BookingManagementComponent {  
+  private modal = inject(NgbModal);
+
   currentDate: Date = new Date();
   year: number = this.currentDate.getFullYear();
   month: string = (this.currentDate.getMonth() + 1).toString().padStart(2, '0');
@@ -19,7 +22,9 @@ export class BookingManagementComponent {
   
   listReservas: { title: string, date: string }[] = [];
   listReservasFecha: Reserva[] = [];
+  reserva!: Reserva;
   loading: boolean = false;
+  hayReservas: boolean = false;
 
   calendarOptions: CalendarOptions = {
     locale: 'es',
@@ -41,6 +46,14 @@ export class BookingManagementComponent {
     this.getReservasFecha(arg.dateStr);
   }
 
+  getReserva(codigo: number) {
+    this.loading = true;
+    this._tourService.getReserva(codigo).subscribe((data: Reserva[]) => {
+      this.reserva = data[0];
+      this.loading = false;
+    });
+  }
+  
   getReservas() {
     this.loading = true;
     this._tourService.getReservas().subscribe((data) => {
@@ -54,9 +67,23 @@ export class BookingManagementComponent {
 
   getReservasFecha(fecha: string) {
     this.loading = true;
+    this.hayReservas = true;
     this._tourService.getReservasFecha(fecha).subscribe((data) => {
       this.listReservasFecha = data;
       this.loading = false;
+      
+      if (this.listReservasFecha.length === 0) {
+        this.hayReservas = false;
+      }
     });
+  }
+
+  openModal(content: TemplateRef<any>, codigo: number) {
+    this.modal.open(content, { windowClass: 'dark-modal', size: 'lg' });
+    this.getReserva(codigo);
+  }  
+
+  closeModal() {
+    this.modal.dismissAll();
   }
 }

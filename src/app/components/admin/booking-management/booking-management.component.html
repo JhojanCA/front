@@ -7,6 +7,77 @@
     </div>
     <div class="bookings">
         <h1>Fecha: {{ date }}</h1>
-        <div #Accordion></div>
+        <table *ngIf="hayReservas" class="table table-bordered table-hover">
+            <thead class="table-active">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Tour</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let reserva of listReservasFecha" (click)="openModal(content, reserva.codigo!)">
+                    <td>{{ reserva.nombre }}</td>
+                    <td>{{ reserva.tour }}</td>
+                    <td>{{ reserva.hora }}</td>
+                    <td>{{ reserva.total }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="!hayReservas">No hay reservas en esta fecha</div>
     </div>
 </main>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Reserva: {{ reserva?.codigo }}</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <div class="col-6 p-2">
+                <label class="form-label">Tour</label>
+                <input type="text" class="form-control" readonly [(ngModel)]="reserva.tour">
+            </div>
+            <div class="col-6 p-2">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" readonly [(ngModel)]="reserva.nombre">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-6 p-2">
+                <label class="form-label">Correo</label>
+                <input type="text" class="form-control" readonly [(ngModel)]="reserva.correo">
+            </div>
+            <div class="col-6 p-2">
+                <label class="form-label">Teléfono</label>
+                <input type="text" class="form-control" readonly [(ngModel)]="reserva.telefono">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-6 p-2">
+                <label class="form-label">Fecha</label>
+                <input type="text" class="form-control" readonly [(ngModel)]="reserva.fecha">
+            </div>
+            <div class="col-6 p-2">
+                <label class="form-label">Hora</label>
+                <input type="text" class="form-control" readonly [(ngModel)]="reserva.hora">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-6 p-2">
+                <label class="form-label">N° personas</label>
+                <input type="text" class="form-control" readonly [(ngModel)]="reserva.total">
+            </div>
+            <div class="col-6 p-2">
+                <label class="form-label">Total</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control" readonly [(ngModel)]="reserva.total">
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

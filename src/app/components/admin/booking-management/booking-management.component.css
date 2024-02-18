@@ -14,7 +14,9 @@ main {
 
 .bookings {
     font-family: 'Poppins', sans-serif;
-    padding: 2rem;
+    padding-left: 1rem;
+    padding-right: 2rem;
+    padding-block: 2rem;
     color: #000850;
 }
 
@@ -22,4 +24,27 @@ main {
     font-size: 1.75rem;
     margin-top: 0.4rem;
     margin-bottom: 1.5rem;
+}
+
+.bookings table tbody tr {
+    cursor: pointer;
+}
+
+.modal-header,
+.modal-body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.modal-body {
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+}
+
+.modal-title,
+.form-label {
+    font-weight: bold;
 }
