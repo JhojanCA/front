@@ -22,6 +22,8 @@ import { LoginRegisterComponent } from './components/login-register/login-regist
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
 
 import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
 @NgModule({
   declarations: [

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-main',
@@ -18,5 +20,14 @@ export class MainComponent {
     },
   ];
 
-  constructor(private ngbCarousel: NgbCarouselModule) {}
+  constructor(private ngbCarousel: NgbCarouselModule, private _userService: UserService, private router: Router) {}
+
+  ngOnInit() {
+    const id = Number(localStorage.getItem('id'));
+    this._userService.getUser(id).subscribe((data) => {
+      if (data.id_rol === 1) {
+        this.router.navigate(['/main']);
+      }
+    })
+  }
 }

@@ -13,11 +13,13 @@ export class TourService {
   private apiUrl: string;
   private tourUrl: string;
   private photoUrl: string;
+  private bookingUrl: string;
 
   constructor(private http: HttpClient) {
     this.apiUrl = environment.endpoint;
     this.tourUrl = `${this.apiUrl}api/tour/`;
     this.photoUrl = `${this.apiUrl}api/photo/`;
+    this.bookingUrl = `${this.apiUrl}api/booking/`;
   } 
 
   getListTours(): Observable<Tour[]> {
@@ -70,7 +72,16 @@ export class TourService {
     return this.http.get<Tour[]>(`${this.tourUrl}categorias`);
   }
 
-  saveReserva(reserva: Reserva): Observable<void> {
-    return this.http.post<void>(`${this.tourUrl}reserva`, reserva);
+  getReservas(): Observable<any> {
+    return this.http.get<any>(`${this.bookingUrl}`);
   }
+  
+  getReservasFecha(fecha: string): Observable<Reserva[]> {
+    return this.http.get<Reserva[]>(`${this.bookingUrl}${fecha}`);
+  }
+
+  saveReserva(reserva: Reserva): Observable<void> {
+    return this.http.post<void>(`${this.bookingUrl}`, reserva);
+  }
+
 }

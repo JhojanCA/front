@@ -1,5 +1,12 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
 <app-navbar-admin></app-navbar-admin>
 
-<div class="calendar">
-    <full-calendar [options]="calendarOptions"></full-calendar>
-</div>
+<main *ngIf="!loading">
+    <div class="calendar">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+    </div>
+    <div class="bookings">
+        <h1>Fecha: {{ date }}</h1>
+        <div #Accordion></div>
+    </div>
+</main>

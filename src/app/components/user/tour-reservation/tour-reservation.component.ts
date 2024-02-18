@@ -64,15 +64,16 @@ export class TourReservationComponent {
 
   addReserva(){
     const reserva: Reserva = {
-      id_usuario: this.id_usuario, 
+      id_usuario: this.id_usuario,
       id_tour: this.id_tour,
+      tour: '',
       nombre: this.form.value.nombre,
       correo: this.form.value.correo,
       telefono: this.form.value.telefono,
       num_personas: this.form.value.num_personas,
       total: this.total,
       fecha: this.form.value.fecha,
-      hora: this.form.value.hora
+      hora: this.form.value.hora,
     }
 
     this.loading = true;

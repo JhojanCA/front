@@ -1,0 +1,25 @@
+main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.calendar {
+    padding: 2rem;
+    color: #000850;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.bookings {
+    font-family: 'Poppins', sans-serif;
+    padding: 2rem;
+    color: #000850;
+}
+
+.bookings h1 {
+    font-size: 1.75rem;
+    margin-top: 0.4rem;
+    margin-bottom: 1.5rem;
+}
