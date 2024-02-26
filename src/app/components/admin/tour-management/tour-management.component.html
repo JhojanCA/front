@@ -1,35 +1,39 @@
 <app-progress-bar *ngIf="loading"></app-progress-bar>
 <app-navbar-admin></app-navbar-admin>
 
-<h2>SELECCIONE EL TOUR</h2>
-<div class="container">
-    <div *ngFor="let tour of listTours" class="card">
-        <img [src]="'http://localhost:3000/' + tour.image" />
-        <div class="nombre">
-            <h5>{{ tour.nombre }}</h5>
-            <h3>{{ tour.precio | currency:'$':'symbol':'1.0' }}</h3>
-        </div>
-        <div class="overlay">
-            <i class="fa-solid fa-pen" placement="top" ngbTooltip="Modificar" (click)="openModal(contentMod, 'lg', tour.id!)"></i>
-            <i class="fa-solid fa-trash" placement="top" ngbTooltip="Eliminar" (click)="deleteTour(tour.id!)"></i>
-            <i class="fa-solid fa-image" placement="top" ngbTooltip="Imágenes" (click)="openModal(contentImg, 'xl', tour.id!)"></i>
+<section *ngIf="!loading">
+    <h2>SELECCIONE EL TOUR</h2>
+    <div class="container">
+        <div *ngFor="let tour of listTours" class="card">
+            <img [src]="'http://localhost:3000/' + tour.image" />
+            <div class="nombre">
+                <h5>{{ tour.nombre }}</h5>
+                <h3>{{ tour.precio | currency:'$':'symbol':'1.0' }}</h3>
+            </div>
+            <div class="overlay">
+                <i class="fa-solid fa-pen" placement="top" ngbTooltip="Modificar"
+                    (click)="openModal(contentMod, 'lg', tour.id!)"></i>
+                <i class="fa-solid fa-image" placement="top" ngbTooltip="Imágenes"
+                    (click)="openModal(contentImg, 'xl', tour.id!)"></i>
+                <i class="fa-solid fa-trash" placement="top" ngbTooltip="Eliminar" (click)="deleteTour(tour.id!)"></i>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
 <ng-template #contentMod let-modal>
     <div class="modal-header">
         <h4 class="modal-title">Modificar Tour</h4>
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
     </div>
-    
+
     <form [formGroup]="formMod" (ngSubmit)="putTour()">
         <div class="modal-body">
             <div class="form-group">
                 <div class="col-12 p-2">
                     <label class="form-label">Nombre</label>
-                    <input formControlName="nombre" type="text" class="form-control" 
-                    [ngClass]="{'is-invalid': formMod.get('nombre')?.invalid && formMod.get('nombre')?.touched}">
+                    <input formControlName="nombre" type="text" class="form-control"
+                        [ngClass]="{'is-invalid': formMod.get('nombre')?.invalid && formMod.get('nombre')?.touched}">
                 </div>
             </div>
             <div class="form-group">
@@ -37,13 +41,14 @@
                     <label class="form-label">Precio</label>
                     <div class="input-group">
                         <span class="input-group-text">$</span>
-                        <input formControlName="precio" type="number" class="form-control" 
-                        [ngClass]="{'is-invalid': formMod.get('precio')?.invalid && formMod.get('precio')?.touched}">
+                        <input formControlName="precio" type="number" class="form-control"
+                            [ngClass]="{'is-invalid': formMod.get('precio')?.invalid && formMod.get('precio')?.touched}">
                     </div>
                 </div>
                 <div class="col-6 p-2">
                     <label class="form-label">Categoría</label>
-                    <select formControlName="id_categoria" class="form-select" [ngClass]="{'is-invalid': formMod.get('id_categoria')?.invalid && formMod.get('id_categoria')?.touched}">
+                    <select formControlName="id_categoria" class="form-select"
+                        [ngClass]="{'is-invalid': formMod.get('id_categoria')?.invalid && formMod.get('id_categoria')?.touched}">
                         <option value="">Seleccione...</option>
                         <option *ngFor="let item of listCategorias" value="{{ item.id }}">
                             {{ item.categoria }}
@@ -54,8 +59,8 @@
             <div class="form-group">
                 <div class="col-12 p-2">
                     <label class="form-label">Descripción</label>
-                    <textarea formControlName="descripcion" class="form-control" rows="8" 
-                    [ngClass]="{'is-invalid': formMod.get('descripcion')?.invalid && formMod.get('descripcion')?.touched}"></textarea>
+                    <textarea formControlName="descripcion" class="form-control" rows="8"
+                        [ngClass]="{'is-invalid': formMod.get('descripcion')?.invalid && formMod.get('descripcion')?.touched}"></textarea>
                 </div>
             </div>
         </div>
@@ -80,14 +85,14 @@
                     <i class="fa-solid fa-pen" (click)="photoInput.click()"></i>
                     <i class="fa-solid fa-trash" (click)="deleteImagen(img.id!, id_tour)"></i>
                 </div>
-                <input type="file" class="d-none" accept="image/*" (change)="updatePhotoSelected($event, img.id!)" #photoInput>
+                <input type="file" class="d-none" accept="image/*" (change)="updatePhotoSelected($event, img.id!)"
+                    #photoInput>
             </div>
         </div>
         <div class="form-group">
             <div class="col-6 p-2">
                 <label class="form-label">Agregar imágenes</label>
-                <input class="form-control" type="file" multiple accept="image/*"
-                    (change)="onPhotoSelected($event)">
+                <input class="form-control" type="file" multiple accept="image/*" (change)="onPhotoSelected($event)">
             </div>
         </div>
         <div class="form-group row ps-2 pe-2">

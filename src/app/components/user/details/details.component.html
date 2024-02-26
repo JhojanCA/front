@@ -1,7 +1,7 @@
 <app-progress-bar *ngIf="loading"></app-progress-bar>
 <app-navbar></app-navbar>
 
-<div id="infotour" class="row" *ngIf="tour">
+<div id="infotour" class="row" *ngIf="!loading && tour">
     <div class="col-md-7 left">
         <ngb-carousel>
             <ng-template ngbSlide *ngFor="let img of images">
@@ -32,7 +32,7 @@
     </div>
 </div>
 
-<div class="row options">
+<div *ngIf="!loading && listTours.length > 0" class="row options">
     <h2>MÁS OPCIONES DISPONIBLES</h2>
     <div class="container">
         <div *ngFor="let item of listTours" (click)="scrollTo('infotour')" class="card">
@@ -52,4 +52,4 @@
 </div>
 
 
-<app-footer></app-footer>
+<app-footer *ngIf="!loading"></app-footer>

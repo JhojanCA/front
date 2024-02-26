@@ -1,34 +1,38 @@
 <app-progress-bar *ngIf="loading"></app-progress-bar>
 <app-navbar></app-navbar>
 
-<h2>TOURS POR EL RÍO SINÚ</h2>
-<div class="container">
-    <div *ngFor="let tour of listToursRiver" routerLink="/details/{{ tour.id }}" class="card">
-        <img [src]="'http://localhost:3000/' + tour.image" />
-        <div class="nombre">
-            <h5>{{ tour.nombre }}</h5>
-            <h3>{{ tour.precio | currency:'$':'symbol':'3.0' }}</h3>
-        </div>
-        <div class="overlay">
-            <h2>{{ tour.nombre }}</h2>
-            <p>{{ tour.descripcion }}</p>
-        </div>
-    </div>
-</div>
-
-<h2>TOURS POR MONTERÍA</h2>
-<div class="container">
-    <div *ngFor="let tour of listToursCity" routerLink="/details/{{ tour.id }}" class="card">
-        <img [src]="'http://localhost:3000/' + tour.image" />
-        <div class="nombre">
-            <h5>{{ tour.nombre }}</h5>
-            <h3>{{ tour.precio | currency:'$':'symbol':'3.0' }}</h3>
-        </div>
-        <div class="overlay">
-            <h2>{{ tour.nombre }}</h2>
-            <p>{{ tour.descripcion }}</p>
+<section *ngIf="!loading && listToursRiver.length > 0">
+    <h2>TOURS POR EL RÍO SINÚ</h2>
+    <div class="container">
+        <div *ngFor="let tour of listToursRiver" routerLink="/details/{{ tour.id }}" class="card">
+            <img [src]="'http://localhost:3000/' + tour.image" />
+            <div class="nombre">
+                <h5>{{ tour.nombre }}</h5>
+                <h3>{{ tour.precio | currency:'$':'symbol':'3.0' }}</h3>
+            </div>
+            <div class="overlay">
+                <h2>{{ tour.nombre }}</h2>
+                <p>{{ tour.descripcion }}</p>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
-<app-footer></app-footer>
+<section *ngIf="!loading && listToursCity.length > 0">
+    <h2>TOURS POR MONTERÍA</h2>
+    <div class="container">
+        <div *ngFor="let tour of listToursCity" routerLink="/details/{{ tour.id }}" class="card">
+            <img [src]="'http://localhost:3000/' + tour.image" />
+            <div class="nombre">
+                <h5>{{ tour.nombre }}</h5>
+                <h3>{{ tour.precio | currency:'$':'symbol':'3.0' }}</h3>
+            </div>
+            <div class="overlay">
+                <h2>{{ tour.nombre }}</h2>
+                <p>{{ tour.descripcion }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer *ngIf="!loading"></app-footer>

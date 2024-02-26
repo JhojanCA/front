@@ -5,7 +5,7 @@ export interface Reserva {
     tour: string;
     nombre: string;
     correo: string;
-    telefono: number;
+    telefono: string;
     num_personas: number;
     total: number;
     fecha: Date;

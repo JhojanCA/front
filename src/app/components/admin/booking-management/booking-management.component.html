@@ -13,6 +13,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Tour</th>
                     <th scope="col">Hora</th>
+                    <th scope="col">#</th>
                     <th scope="col">Total</th>
                 </tr>
             </thead>
@@ -21,6 +22,7 @@
                     <td>{{ reserva.nombre }}</td>
                     <td>{{ reserva.tour }}</td>
                     <td>{{ reserva.hora }}</td>
+                    <td>{{ reserva.num_personas }}</td>
                     <td>{{ reserva.total }}</td>
                 </tr>
             </tbody>
@@ -69,7 +71,7 @@
         <div class="form-group">
             <div class="col-6 p-2">
                 <label class="form-label">N° personas</label>
-                <input type="text" class="form-control" readonly [(ngModel)]="reserva.total">
+                <input type="text" class="form-control" readonly [(ngModel)]="reserva.num_personas">
             </div>
             <div class="col-6 p-2">
                 <label class="form-label">Total</label>
