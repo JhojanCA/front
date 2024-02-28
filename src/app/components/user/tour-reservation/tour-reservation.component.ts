@@ -79,6 +79,7 @@ export class TourReservationComponent {
     this.loading = true;
     this._tourService.saveReserva(reserva).subscribe(() => {
       this.loading = false;
+      window.history.back(); 
       Swal.fire({
         title: "RESERVA REALIZADA!",
         icon: "success"
