@@ -24,6 +24,7 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { StatisticsComponent } from './components/admin/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import interactionPlugin from '@fullcalendar/interaction';
     BookingManagementComponent,
     TourReservationComponent,
     ProgressBarComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,11 @@
 <app-progress-bar *ngIf="loading"></app-progress-bar>
 <app-navbar-admin></app-navbar-admin>
 
-<main *ngIf="!loading">
+<main>
     <div class="calendar">
         <full-calendar [options]="calendarOptions"></full-calendar>
     </div>
-    <div class="bookings">
+    <div *ngIf="!loading" class="bookings">
         <h1>Fecha: {{ date }}</h1>
         <table *ngIf="hayReservas" class="table table-bordered table-hover">
             <thead class="table-active">

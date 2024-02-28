@@ -2,14 +2,14 @@ import { Component, ElementRef, inject, Renderer2, TemplateRef, ViewChild } from
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { Reserva } from 'src/app/interfaces/reserva';
 import { TourService } from 'src/app/services/tour.service';
 
 @Component({
   selector: 'app-booking-management',
   templateUrl: './booking-management.component.html',
-  styleUrls: ['./booking-management.component.css']
+  styleUrls: ['./booking-management.component.css'],
 })
 export class BookingManagementComponent {  
   private modal = inject(NgbModal);

@@ -10,6 +10,7 @@ import { TourManagementComponent } from './components/admin/tour-management/tour
 import { TourReservationComponent } from './components/user/tour-reservation/tour-reservation.component';
 import { LoginRegisterComponent } from './components/login-register/login-register.component';
 import { AuthGuard } from './utils/auth.guard';
+import { StatisticsComponent } from './components/admin/statistics/statistics.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,10 @@ const routes: Routes = [
   {
     path: 'tour_management',
     component: TourManagementComponent
+  },
+  {
+    path: 'statistics',
+    component: StatisticsComponent
   },
   {
     path: '**',
